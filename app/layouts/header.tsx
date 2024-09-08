@@ -46,7 +46,13 @@ const Header = () => {
                         <Text>Diversify</Text>
                     </ListItem>
                     <ListItem>
-                        <Button variant="login" size="md" fontSize="md">
+                        <Button
+                            variant="login"
+                            size="md"
+                            fontSize="md"
+                            paddingLeft="1.4em"
+                            paddingRight="1.4em"
+                        >
                             Login
                         </Button>
                     </ListItem>
