@@ -46,11 +46,13 @@ const components = {
                 bg: secondary,
                 color: 'white',
                 borderRadius: '16px 8px 16px 0px',
+                fontSize: 'sm',
             },
             login: {
                 bg: primary,
                 color: 'white',
                 borderRadius: '16px 8px 16px 8px',
+                fontSize: 'sm',
             },
         },
         defaultProps: {

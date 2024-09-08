@@ -11,7 +11,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <Flex justifyContent="space-between" alignItems="center">
+        <Flex justifyContent="space-between" alignItems="center" zIndex="1">
             <Box width="7em">
                 <Image src="/assets/digi.png" alt="digi.png" />
             </Box>
@@ -25,13 +25,13 @@ const Header = () => {
                     alignItems="center"
                 >
                     <ListItem cursor="pointer">
-                        <Text color="brand.primary" fontWeight="semibold">
+                        <Text color="brand.primary" fontWeight="medium">
                             Home
                         </Text>
                     </ListItem>
                     <ListItem
                         cursor="pointer"
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         opacity="0.8"
                         color="brand.secondary"
                     >
@@ -39,7 +39,7 @@ const Header = () => {
                     </ListItem>
                     <ListItem
                         cursor="pointer"
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         opacity="0.8"
                         color="brand.secondary"
                     >
@@ -52,7 +52,7 @@ const Header = () => {
                             fontSize="md"
                             paddingLeft="1.4em"
                             paddingRight="1.4em"
-                            fontWeight="semibold"
+                            fontWeight="medium"
                         >
                             Login
                         </Button>
