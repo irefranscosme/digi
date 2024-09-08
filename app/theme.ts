@@ -1,4 +1,9 @@
-import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import {
+    ComponentStyleConfig,
+    extendTheme,
+    ThemeConfig,
+    ThemeOverride,
+} from '@chakra-ui/react';
 import '@fontsource/be-vietnam-pro/300.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/400.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/500.css'; // Medium weight
@@ -30,38 +35,55 @@ const fontWeights = {
     extraBold: 700,
 };
 
-const components = {
-    Button: {
-        baseStyle: {
-            fontWeight: 'semibold',
-        },
-        variants: {
-            primary: {
-                bg: primary,
-                color: 'white',
-                borderRadius: '16px 0px 16px 8px',
-                fontSize: 'sm',
-            },
-            secondary: {
-                bg: secondary,
-                color: 'white',
-                borderRadius: '16px 8px 16px 0px',
-                fontSize: 'sm',
-            },
-            login: {
-                bg: primary,
-                color: 'white',
-                borderRadius: '16px 8px 16px 8px',
-                fontSize: 'sm',
-            },
-        },
-        defaultProps: {
-            size: 'sm',
-            variant: 'sm',
-            colorScheme: primary,
+const Button: ComponentStyleConfig = {
+    baseStyle: {
+        fontWeight: 'semibold',
+    },
+    variants: {
+        primary: {
             bg: primary,
+            color: 'white',
+            borderRadius: '16px 0px 16px 8px',
+            fontSize: 'sm',
+            _hover: {
+                boxShadow: `
+                 2px  2px 0px ${tertiary}   /* Bottom-right shadow */
+              `,
+            },
+        },
+        secondary: {
+            bg: secondary,
+            color: 'white',
+            borderRadius: '16px 8px 16px 0px',
+            fontSize: 'sm',
+            _hover: {
+                boxShadow: `
+                 2px  2px 0px ${tertiary}   /* Bottom-right shadow */
+              `,
+            },
+        },
+        login: {
+            bg: primary,
+            color: 'white',
+            borderRadius: '16px 8px 16px 8px',
+            fontSize: 'sm',
+            _hover: {
+                boxShadow: `
+                 2px  2px 0px ${tertiary}   /* Bottom-right shadow */
+              `,
+            },
         },
     },
+    defaultProps: {
+        size: 'sm',
+        variant: 'sm',
+        colorScheme: primary,
+        bg: primary,
+    },
+};
+
+const components = {
+    Button,
 };
 
 const breakpoints = {
@@ -73,6 +95,14 @@ const breakpoints = {
     '2xl': '96em',
 };
 
+const customeTheme: ThemeOverride = {
+    breakpoints,
+    components,
+    colors,
+    fonts,
+    fontWeights,
+};
+
 const config: ThemeConfig = {
     initialColorMode: 'light',
     useSystemColorMode: true,
@@ -80,11 +110,7 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
     config,
-    breakpoints,
-    colors,
-    components,
-    fonts,
-    fontWeights,
+    ...customeTheme,
 });
 
 export default theme;

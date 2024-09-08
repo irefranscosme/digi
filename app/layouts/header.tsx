@@ -25,7 +25,11 @@ const Header = () => {
                     alignItems="center"
                 >
                     <ListItem cursor="pointer">
-                        <Text color="brand.primary" fontWeight="medium">
+                        <Text
+                            color="brand.primary"
+                            fontWeight="medium"
+                            variant="hover-box-shadow"
+                        >
                             Home
                         </Text>
                     </ListItem>
