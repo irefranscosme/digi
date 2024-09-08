@@ -19,7 +19,7 @@ const Header = () => {
                 <UnorderedList
                     styleType="none"
                     flexDirection="row"
-                    gap="3"
+                    gap="6"
                     fontSize="lg"
                     display="flex"
                     alignItems="center"
@@ -52,6 +52,7 @@ const Header = () => {
                             fontSize="md"
                             paddingLeft="1.4em"
                             paddingRight="1.4em"
+                            fontWeight="semibold"
                         >
                             Login
                         </Button>

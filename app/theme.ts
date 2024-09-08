@@ -1,4 +1,9 @@
 import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import '@fontsource/be-vietnam-pro/300.css'; // Normal weight
+import '@fontsource/be-vietnam-pro/400.css'; // Normal weight
+import '@fontsource/be-vietnam-pro/500.css'; // Medium weight
+import '@fontsource/be-vietnam-pro/600.css'; // Medium weight
+import '@fontsource/be-vietnam-pro/700.css'; // Bold weight
 
 const primary = '#347DEB';
 const secondary = '#4D596B';
@@ -10,6 +15,19 @@ const colors = {
         secondary: secondary,
         tertiary: tertiary,
     },
+};
+
+const fonts = {
+    heading: `'Be Vietnam Pro', sans-serif`,
+    body: `'Be Vietnam Pro', sans-serif`,
+};
+
+const fontWeights = {
+    normal: 300,
+    medium: 400,
+    semibold: 500,
+    bold: 600,
+    extraBold: 700,
 };
 
 const components = {
@@ -58,6 +76,13 @@ const config: ThemeConfig = {
     useSystemColorMode: true,
 };
 
-const theme = extendTheme({ config, breakpoints, colors, components });
+const theme = extendTheme({
+    config,
+    breakpoints,
+    colors,
+    components,
+    fonts,
+    fontWeights,
+});
 
 export default theme;
