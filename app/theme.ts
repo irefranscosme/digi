@@ -39,11 +39,24 @@ const breakpoints = {
     '2xl': '96em',
 };
 
+// -webkit-font-smoothing: antialiased;
+// -moz-osx-font-smoothing: grayscale;
+// font-smooth: never;
+
 const customeTheme: ThemeOverride = {
     breakpoints,
     // colors,
     fonts,
     fontWeights,
+    styles: {
+        global: {
+            ':root': {
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+                fontSmooth: 'never',
+            },
+        },
+    },
 };
 
 const config: ThemeConfig = {

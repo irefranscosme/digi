@@ -1,47 +1,79 @@
-import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Flex,
+    Grid,
+    GridItem,
+    Heading,
+    Image,
+    Text,
+} from '@chakra-ui/react';
 import React from 'react';
 
 const Hero = () => {
     return (
-        <Flex
-            justifyContent="space-between"
+        <Grid
             isolation="isolate"
             position="relative"
-            zIndex="-10"
+            templateColumns={[
+                'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
+                'repeat(2, 1fr)',
+            ]}
         >
-            <Flex
-                flexDirection="column"
-                maxW="4xl"
-                flexBasis="50%"
-                paddingBlock="40"
+            <GridItem>
+                <Flex
+                    flexDirection="column"
+                    flexBasis="50%"
+                    paddingBlock="40"
+                    gap="4"
+                >
+                    <Flex flexDirection="column" gap="2">
+                        <Flex gap="1" flexDirection="column">
+                            <Text
+                                textTransform="uppercase"
+                                lineHeight="1.618"
+                                letterSpacing="-0.011"
+                                fontWeight="semibold"
+                            >
+                                Welcome to DIGI:
+                            </Text>
+                            <Heading lineHeight="1.272" letterSpacing="-0.014">
+                                Your Ultimate Diversification Companion
+                            </Heading>
+                        </Flex>
+                        <Text
+                            maxW="lg"
+                            lineHeight="1.618"
+                            letterSpacing="-0.011"
+                        >
+                            Simplify your financial planning with DIGI where
+                            smart diversification meets effortless management.
+                        </Text>
+                    </Flex>
+                    <Flex gap="4">
+                        <Button>Diversify Now</Button>
+                        <Button>Learn More</Button>
+                    </Flex>
+                </Flex>
+            </GridItem>
+            <GridItem
+                zIndex="-20"
+                position={['absolute', 'absolute', 'unset']}
+                top={['0', '0', 'auto']}
+                opacity={['0.5', '0.5', '1']}
             >
                 <Box>
-                    <Heading>
-                        Welcome to DIGI: Your Ultimate Diversification Companion
-                    </Heading>
-                    <Text>
-                        DIGI helps you optimize your salary by automatically
-                        distributing it across various banks and investments.
-                        Our app ensures your emergency funds and savings are
-                        well-diversified, reducing risk and maximizing growth.
-                        Simplify your financial planning with DIGI where smart
-                        diversification meets effortless management.
-                    </Text>
+                    <Image
+                        src="/assets/hero.png"
+                        alt="hero.png"
+                        objectFit="contain"
+                        minHeight="20em"
+                        mixBlendMode="multiply"
+                    />
                 </Box>
-                <Flex>
-                    <Button>Diversify Now</Button>
-                    <Button>Learn More</Button>
-                </Flex>
-            </Flex>
-            <Box position="absolute" right="0" bottom="0" zIndex="-10">
-                <Image
-                    src="/assets/hero.png"
-                    alt="hero.png"
-                    objectFit="contain"
-                    minHeight="20em"
-                />
-            </Box>
-        </Flex>
+            </GridItem>
+        </Grid>
     );
 };
 
