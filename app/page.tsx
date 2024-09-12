@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function Home() {
     return (
-        <Flex flexDirection="column" gap="20">
+        <Flex flexDirection="column" gap={[0, 0, 20]}>
             <Hero />
             <What />
             <How />
