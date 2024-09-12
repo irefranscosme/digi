@@ -38,7 +38,11 @@ const Hero = () => {
                             >
                                 Welcome to DIGI:
                             </Text>
-                            <Heading lineHeight="1.272" letterSpacing="-0.014">
+                            <Heading
+                                lineHeight="1.272"
+                                letterSpacing="-0.014"
+                                fontSize="2.058em"
+                            >
                                 Your Ultimate Diversification Companion
                             </Heading>
                         </Flex>
@@ -46,6 +50,7 @@ const Hero = () => {
                             maxW="lg"
                             lineHeight="1.618"
                             letterSpacing="-0.011"
+                            fontSize="1em"
                         >
                             Simplify your financial planning with DIGI where
                             smart diversification meets effortless management.

@@ -5,17 +5,17 @@ import '@fontsource/be-vietnam-pro/500.css'; // Medium weight
 import '@fontsource/be-vietnam-pro/600.css'; // Medium weight
 import '@fontsource/be-vietnam-pro/700.css'; // Bold weight
 
-// const primary = '#347DEB';
-// const secondary = '#4D596B';
-// const tertiary = '#EBC334';
+const primary = '#347DEB';
+const secondary = '#4D596B';
+const tertiary = '#EBC334';
 
-// const colors = {
-//     brand: {
-//         primary: primary,
-//         secondary: secondary,
-//         tertiary: tertiary,
-//     },
-// };
+const colors = {
+    brand: {
+        primary: primary,
+        secondary: secondary,
+        tertiary: tertiary,
+    },
+};
 
 const fonts = {
     heading: `'Be Vietnam Pro', sans-serif`,
@@ -45,7 +45,7 @@ const breakpoints = {
 
 const customeTheme: ThemeOverride = {
     breakpoints,
-    // colors,
+    colors,
     fonts,
     fontWeights,
     styles: {
