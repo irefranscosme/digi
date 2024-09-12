@@ -15,7 +15,7 @@ const Header = () => {
             <Box width="7em">
                 <Image src="/assets/digi.png" alt="digi.png" />
             </Box>
-            <Box>
+            <Box display={['none', 'none', 'block']}>
                 <UnorderedList
                     styleType="none"
                     flexDirection="row"

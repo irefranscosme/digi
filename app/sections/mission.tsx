@@ -8,6 +8,7 @@ const Mission = () => {
             flexDirection="column"
             paddingBlock={['20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
+            border={'1px solid violet'}
         >
             <Flex justifyContent="center" alignItems="center">
                 <Box>

@@ -22,6 +22,7 @@ const Hero = () => {
             ]}
             paddingBlock={['20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
+            border={'1px solid green'}
         >
             <GridItem>
                 <Flex flexDirection="column" flexBasis="50%" gap="4">
@@ -32,6 +33,7 @@ const Hero = () => {
                                 lineHeight="1.618"
                                 letterSpacing="-0.011"
                                 fontWeight="semibold"
+                                textAlign={['center', 'center', 'start']}
                             >
                                 Welcome to DIGI:
                             </Text>
@@ -39,32 +41,31 @@ const Hero = () => {
                                 lineHeight="1.272"
                                 letterSpacing="-0.014"
                                 fontSize="2.058em"
+                                textAlign={['center', 'center', 'start']}
                             >
                                 Your Ultimate Diversification Companion
                             </Heading>
                         </Flex>
                         <Text
-                            maxW="lg"
                             lineHeight="1.618"
                             letterSpacing="-0.011"
                             fontSize="1em"
+                            textAlign={['center', 'center', 'start']}
                         >
                             Simplify your financial planning with DIGI where
                             smart diversification meets effortless management.
                         </Text>
                     </Flex>
-                    <Flex gap="4">
+                    <Flex
+                        gap="4"
+                        justifyContent={['center', 'center', 'start']}
+                    >
                         <Button>Diversify Now</Button>
                         <Button>Learn More</Button>
                     </Flex>
                 </Flex>
             </GridItem>
-            <GridItem
-                zIndex="-20"
-                position={['absolute', 'absolute', 'unset']}
-                top={['0', '0', 'auto']}
-                opacity={['0.5', '0.5', '1']}
-            >
+            <GridItem>
                 <Box>
                     <Image
                         src="/assets/hero.png"

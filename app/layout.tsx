@@ -1,7 +1,8 @@
-import { Container } from '@chakra-ui/react';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
 import Header from './sections/header';
 import { Providers } from './providers';
 import Head from 'next/head';
+import Footer from './sections/footer';
 
 export default function RootLayout({
     children,
@@ -20,13 +21,39 @@ export default function RootLayout({
             </Head>
             <body>
                 <Providers>
-                    <Container
-                        maxW="150ch"
-                        paddingBlock="4"
-                        position="relative"
-                    >
-                        <Header />
-                        {children}
+                    <Container maxWidth={['auto', 'auto', '140ch']}>
+                        <Grid
+                            templateAreas={`
+                            "header"
+                            "main"
+                            "footer"
+                        `}
+                            gridTemplateRows={'auto 1fr auto'}
+                            gridTemplateColumns={'1fr'}
+                            border={'1px solid'}
+                        >
+                            <GridItem
+                                area={'header'}
+                                my="auto"
+                                border={'1px solid red'}
+                            >
+                                <Header />
+                            </GridItem>
+                            <GridItem
+                                area={'main'}
+                                my="auto"
+                                border={'1px solid red'}
+                            >
+                                {children}
+                            </GridItem>
+                            <GridItem
+                                area={'footer'}
+                                my="auto"
+                                border={'1px solid red'}
+                            >
+                                <Footer />
+                            </GridItem>
+                        </Grid>
                     </Container>
                 </Providers>
             </body>

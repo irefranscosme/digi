@@ -24,6 +24,7 @@ const What = () => {
             alignContent="space-between"
             paddingBlock={['20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
+            border={'1px solid pink'}
         >
             <GridItem>
                 <Flex flexDirection="column" basis="50%" gap="4">
@@ -32,6 +33,7 @@ const What = () => {
                             lineHeight="1.272"
                             letterSpacing="-0.014"
                             fontSize="1.618em"
+                            textAlign={['center', 'center', 'start']}
                         >
                             What is Diversification
                         </Heading>
@@ -39,6 +41,7 @@ const What = () => {
                             maxW="2xl"
                             lineHeight="1.618"
                             letterSpacing="-0.011"
+                            textAlign={['center', 'center', 'start']}
                         >
                             Spreading your resources such as income,
                             investments, or savings across different areas to
@@ -48,7 +51,10 @@ const What = () => {
                             growth.
                         </Text>
                     </Box>
-                    <Flex flexGrow="1">
+                    <Flex
+                        flexGrow="1"
+                        justifyContent={['center', 'center', 'start']}
+                    >
                         <Stack>
                             <Flex gap="4" alignItems="start">
                                 <Image
@@ -176,33 +182,14 @@ const What = () => {
                     </Flex>
                 </Flex>
             </GridItem>
-            <GridItem
-                zIndex="-20"
-                position={['absolute', 'absolute', 'unset']}
-                bottom={['0', '0', 'auto']}
-                left={['0', '0', 'auto']}
-                right={['0', '0', 'auto']}
-                opacity={['0.2', '0.2', '1']}
-            >
+            <GridItem zIndex="-20">
                 <Flex
                     isolation="isolate"
                     position="relative"
-                    maxW="xl"
-                    mx="auto"
-                    justifyContent="center"
+                    justifyContent={['center']}
                     alignItems="center"
-                    _before={{
-                        content: '""',
-                        position: 'absolute',
-                        inset: '0',
-                        zIndex: '20',
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'gray.900',
-                        mixBlendMode: 'color-dodge',
-                        borderBottomRadius: '128px',
-                        opacity: [1, 1, 0],
-                    }}
+                    mt="2em"
+                    margin={'1em'}
                 >
                     <Image
                         src="/assets/types-of-diversification.png"
