@@ -18,11 +18,11 @@ const Hero = () => {
             templateColumns={[
                 'repeat(1, 1fr)',
                 'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
                 'repeat(2, 1fr)',
             ]}
-            paddingBlock={['20', '20', '0']}
+            paddingBlock={['20', '20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
-            border={'1px solid green'}
         >
             <GridItem>
                 <Flex flexDirection="column" flexBasis="50%" gap="4">

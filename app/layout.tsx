@@ -21,7 +21,10 @@ export default function RootLayout({
             </Head>
             <body>
                 <Providers>
-                    <Container maxWidth={['auto', 'auto', '140ch']}>
+                    <Container
+                        maxWidth={['auto', 'auto', '140ch']}
+                        px={['1em', '1em', '2em']}
+                    >
                         <Grid
                             templateAreas={`
                             "header"
@@ -30,26 +33,27 @@ export default function RootLayout({
                         `}
                             gridTemplateRows={'auto 1fr auto'}
                             gridTemplateColumns={'1fr'}
-                            border={'1px solid'}
+                            // border={'1px solid'}
                         >
                             <GridItem
                                 area={'header'}
                                 my="auto"
-                                border={'1px solid red'}
+                                paddingTop={'1em'}
+                                // border={'1px solid red'}
                             >
                                 <Header />
                             </GridItem>
                             <GridItem
                                 area={'main'}
                                 my="auto"
-                                border={'1px solid red'}
+                                // border={'1px solid red'}
                             >
                                 {children}
                             </GridItem>
                             <GridItem
                                 area={'footer'}
                                 my="auto"
-                                border={'1px solid red'}
+                                // border={'1px solid red'}
                             >
                                 <Footer />
                             </GridItem>

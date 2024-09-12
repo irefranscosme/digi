@@ -18,42 +18,56 @@ const What = () => {
             templateColumns={[
                 'repeat(1, 1fr)',
                 'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
                 'repeat(2, 1fr)',
             ]}
             justifyContent="space-between"
             alignContent="space-between"
-            paddingBlock={['20', '20', '0']}
+            paddingBlock={['20', '20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
-            border={'1px solid pink'}
         >
             <GridItem>
                 <Flex flexDirection="column" basis="50%" gap="4">
                     <Box>
-                        <Heading
-                            lineHeight="1.272"
-                            letterSpacing="-0.014"
-                            fontSize="1.618em"
+                        <Text
+                            lineHeight="1.618"
+                            letterSpacing="-0.011"
+                            fontSize={'1.618em'}
+                            fontWeight={'thin'}
                             textAlign={['center', 'center', 'start']}
                         >
-                            What is Diversification
+                            What is?
+                        </Text>
+                        <Heading
+                            color={'brand.primary'}
+                            lineHeight="1.272"
+                            letterSpacing="0.4em"
+                            fontSize="2.058em"
+                            textAlign={['center', 'center', 'start']}
+                            textTransform={'uppercase'}
+                            fontWeight={'extraBold'}
+                        >
+                            Diversification?
                         </Heading>
                         <Text
-                            maxW="2xl"
+                            maxW={['auto', 'auto', 'auto', '2xl']}
                             lineHeight="1.618"
                             letterSpacing="-0.011"
                             textAlign={['center', 'center', 'start']}
                         >
                             Spreading your resources such as income,
                             investments, or savings across different areas to
-                            reduce risk and increase stability. By not relying
-                            on a single source, you protect yourself from
-                            potential losses and create more opportunities for
-                            growth.
+                            reduce risk and increase stability.
                         </Text>
                     </Box>
                     <Flex
                         flexGrow="1"
-                        justifyContent={['center', 'center', 'start']}
+                        justifyContent={[
+                            'center',
+                            'center',
+                            'space-between',
+                            'start',
+                        ]}
                     >
                         <Stack>
                             <Flex gap="4" alignItems="start">
@@ -179,24 +193,73 @@ const What = () => {
                                 </Box>
                             </Flex>
                         </Stack>
+                        <Flex
+                            isolation="isolate"
+                            position="relative"
+                            justifyContent={'center'}
+                            alignItems="center"
+                            // padding={'1em'}
+                            mx={'auto'}
+                            display={['none', 'none', 'block', 'none']}
+                        >
+                            <Flex
+                                maxWidth={['40em', '40em', '40em', '40em']}
+                                alignItems={'center'}
+                            >
+                                <Image
+                                    src="/assets/types-of-diversification.png"
+                                    alt="types-of-diversification.png"
+                                    borderBottomRadius="128px"
+                                    position="relative"
+                                />
+                                <Flex
+                                    width="4em"
+                                    position="absolute"
+                                    top="-2.1em"
+                                    left="-2.1em"
+                                    zIndex="1"
+                                >
+                                    <Image
+                                        src="/assets/multiply.png"
+                                        alt="multiply.png"
+                                    />
+                                </Flex>
+                                <Flex
+                                    width="3em"
+                                    position="absolute"
+                                    top="-1.2em"
+                                    right="-1.2em"
+                                    zIndex="1"
+                                >
+                                    <Image
+                                        src="/assets/equal.png"
+                                        alt="equal.png"
+                                    />
+                                </Flex>
+                            </Flex>
+                        </Flex>
                     </Flex>
                 </Flex>
             </GridItem>
-            <GridItem zIndex="-20">
+            <GridItem
+                zIndex="-20"
+                padding={['unset', '2em', '4em']}
+                display={['block', 'block', 'none', 'block']}
+            >
                 <Flex
                     isolation="isolate"
                     position="relative"
-                    justifyContent={['center']}
+                    justifyContent={'center'}
                     alignItems="center"
                     mt="2em"
                     margin={'1em'}
+                    maxWidth={'30em'}
+                    mx={'auto'}
                 >
                     <Image
                         src="/assets/types-of-diversification.png"
                         alt="types-of-diversification.png"
-                        mixBlendMode="multiply"
                         borderBottomRadius="128px"
-                        width="100%"
                         position="relative"
                     />
                     <Flex

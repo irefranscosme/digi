@@ -12,7 +12,6 @@ import React from 'react';
 const How = () => {
     return (
         <Flex
-            border={'1px solid green'}
             isolation="isolate"
             position="relative"
             flexDirection="column"
