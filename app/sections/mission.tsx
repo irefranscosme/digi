@@ -3,7 +3,12 @@ import React from 'react';
 
 const Mission = () => {
     return (
-        <Flex isolation="isolate" flexDirection="column">
+        <Flex
+            isolation="isolate"
+            flexDirection="column"
+            paddingBlock={['20', '20', '0']}
+            alignItems={['unset', 'unset', 'center']}
+        >
             <Flex justifyContent="center" alignItems="center">
                 <Box>
                     <Heading textAlign="center">

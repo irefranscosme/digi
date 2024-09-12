@@ -12,7 +12,10 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <Stack>
+        <Stack
+            paddingBlock={['20', '20', '0']}
+            alignItems={['unset', 'unset', 'center']}
+        >
             <Box width="5em">
                 <Image src="/assets/digi.png" alt="digi.png" />
             </Box>

@@ -22,6 +22,8 @@ const What = () => {
             ]}
             justifyContent="space-between"
             alignContent="space-between"
+            paddingBlock={['20', '20', '0']}
+            alignItems={['unset', 'unset', 'center']}
         >
             <GridItem>
                 <Flex flexDirection="column" basis="50%" gap="4">
@@ -177,7 +179,6 @@ const What = () => {
             <GridItem
                 zIndex="-20"
                 position={['absolute', 'absolute', 'unset']}
-                top={['0', '0', 'auto']}
                 bottom={['0', '0', 'auto']}
                 left={['0', '0', 'auto']}
                 right={['0', '0', 'auto']}

@@ -20,14 +20,11 @@ const Hero = () => {
                 'repeat(1, 1fr)',
                 'repeat(2, 1fr)',
             ]}
+            paddingBlock={['20', '20', '0']}
+            alignItems={['unset', 'unset', 'center']}
         >
             <GridItem>
-                <Flex
-                    flexDirection="column"
-                    flexBasis="50%"
-                    paddingBlock="40"
-                    gap="4"
-                >
+                <Flex flexDirection="column" flexBasis="50%" gap="4">
                     <Flex flexDirection="column" gap="2">
                         <Flex gap="1" flexDirection="column">
                             <Text
