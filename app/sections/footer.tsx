@@ -23,7 +23,7 @@ const Footer = () => {
             color={'white'}
         >
             <Stack
-                paddingBlock={['20', '20', '0']}
+                paddingBlock={['20', '20', '20']}
                 justifyContent={'space-between'}
                 position={'relative'}
             >
