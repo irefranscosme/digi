@@ -60,8 +60,8 @@ const Hero = () => {
                         gap="4"
                         justifyContent={['center', 'center', 'start']}
                     >
-                        <Button>Diversify Now</Button>
-                        <Button>Learn More</Button>
+                        <Button colorScheme="blue">Diversify Now</Button>
+                        <Button colorScheme="gray">Learn More</Button>
                     </Flex>
                 </Flex>
             </GridItem>

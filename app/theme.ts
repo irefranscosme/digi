@@ -1,4 +1,9 @@
-import { extendTheme, ThemeConfig, ThemeOverride } from '@chakra-ui/react';
+import {
+    extendTheme,
+    ThemeConfig,
+    ThemeOverride,
+    theme as baseTheme,
+} from '@chakra-ui/react';
 import '@fontsource/be-vietnam-pro/300.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/400.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/500.css'; // Medium weight
@@ -14,6 +19,14 @@ const colors = {
         primary: primary,
         secondary: secondary,
         tertiary: tertiary,
+    },
+    blue: {
+        ...baseTheme.colors.blue,
+        500: primary, // Default blue
+    },
+    gray: {
+        ...baseTheme.colors.gray,
+        500: secondary,
     },
 };
 
@@ -38,10 +51,6 @@ const breakpoints = {
     xl: '80em',
     '2xl': '96em',
 };
-
-// -webkit-font-smoothing: antialiased;
-// -moz-osx-font-smoothing: grayscale;
-// font-smooth: never;
 
 const customeTheme: ThemeOverride = {
     breakpoints,

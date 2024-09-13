@@ -62,12 +62,14 @@ const Footer = () => {
                                     <Input
                                         placeholder="Name"
                                         backgroundColor={'white'}
+                                        color={'black'}
                                     />
                                 </FormControl>
                                 <FormControl isRequired>
                                     <Input
                                         placeholder="Email"
                                         backgroundColor={'white'}
+                                        color={'black'}
                                     />
                                 </FormControl>
                                 <FormControl isRequired>
@@ -75,10 +77,13 @@ const Footer = () => {
                                         rows={8}
                                         placeholder="Enter your message here."
                                         backgroundColor={'white'}
+                                        color={'black'}
                                     />
                                 </FormControl>
                                 <FormControl>
-                                    <Button>Send message</Button>
+                                    <Button colorScheme="blue">
+                                        Send message
+                                    </Button>
                                 </FormControl>
                             </Flex>
                         </form>

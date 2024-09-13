@@ -38,7 +38,7 @@ const Header = () => {
                         <Text>Diversify</Text>
                     </ListItem>
                     <ListItem>
-                        <Button>Login</Button>
+                        <Button colorScheme="blue">Login</Button>
                     </ListItem>
                 </UnorderedList>
             </Box>
