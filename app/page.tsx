@@ -5,7 +5,7 @@ import How from './sections/how';
 import Mission from './sections/mission';
 
 export const metadata = {
-    title: 'Digi',
+    title: 'DIGI',
     description:
         'Simplify your financial planning with DIGI where smart diversification meets effortless management.',
 };
