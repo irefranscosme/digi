@@ -23,6 +23,7 @@ const What = () => {
             ]}
             paddingBlock={['20', '20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
+            gap="8"
         >
             <GridItem>
                 <Flex flexDirection="column" gap="4">
@@ -189,6 +190,7 @@ const What = () => {
                             isolation="isolate"
                             position="relative"
                             display={['none', 'none', 'block', 'none']}
+                            alignSelf={'flex-start'}
                         >
                             <Flex
                                 alignItems={'center'}
@@ -231,37 +233,45 @@ const What = () => {
             </GridItem>
             <GridItem
                 zIndex="-20"
-                padding={['unset', '2em', '4em']}
                 display={['block', 'block', 'none', 'block']}
+                px={['1em', 'auto', 'auto']}
             >
                 <Flex
                     isolation="isolate"
-                    position="relative"
-                    maxW={['30em']}
-                    mx="auto"
+                    justifyContent={['center', 'center', 'flex-end']}
                 >
-                    <Image
-                        src="/assets/types-of-diversification.png"
-                        alt="types-of-diversification.png"
-                        borderBottomRadius="128px"
-                    />
                     <Flex
-                        width="4em"
-                        position="absolute"
-                        top="-2.1em"
-                        left="-2.1em"
-                        zIndex="1"
+                        position="relative"
+                        // minWidth="24em"
+                        maxWidth={['auto', '30em']}
                     >
-                        <Image src="/assets/multiply.png" alt="multiply.png" />
-                    </Flex>
-                    <Flex
-                        width="3em"
-                        position="absolute"
-                        top="-1.2em"
-                        right="-1.2em"
-                        zIndex="1"
-                    >
-                        <Image src="/assets/equal.png" alt="equal.png" />
+                        <Image
+                            src="/assets/types-of-diversification.png"
+                            alt="types-of-diversification.png"
+                            borderBottomRadius="128px"
+                            // padding={['20em', 'unset', 'unset']}
+                        />
+                        <Flex
+                            width="4em"
+                            position="absolute"
+                            top="-2.1em"
+                            left="-2.1em"
+                            zIndex="1"
+                        >
+                            <Image
+                                src="/assets/multiply.png"
+                                alt="multiply.png"
+                            />
+                        </Flex>
+                        <Flex
+                            width="3em"
+                            position="absolute"
+                            top="-1.2em"
+                            right="-1.2em"
+                            zIndex="1"
+                        >
+                            <Image src="/assets/equal.png" alt="equal.png" />
+                        </Flex>
                     </Flex>
                 </Flex>
             </GridItem>
