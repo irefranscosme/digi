@@ -19,6 +19,7 @@ const How = () => {
             flexDirection="column"
             justifyContent={'center'}
             gap="8"
+            paddingBlock={['20', '20', '20', '0']}
         >
             <Flex justifyContent="center" alignItems="center">
                 <Flex flexDirection="column">
