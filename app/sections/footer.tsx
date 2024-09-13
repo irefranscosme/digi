@@ -30,8 +30,16 @@ const Footer = () => {
                 <Flex width="5em" mx={['auto', 'auto', 'unset']}>
                     <Image src="/assets/digi.png" alt="digi.png" />
                 </Flex>
-                <Flex gap="20" justifyContent={'space-between'}>
-                    <Flex flexDirection="column" gap="4" flexBasis={'30%'}>
+                <Flex
+                    gap="20"
+                    justifyContent={'space-between'}
+                    flexDirection={['column', 'column', 'row']}
+                >
+                    <Flex
+                        flexDirection="column"
+                        gap="4"
+                        flexBasis={['100%', '100%', '50%', '30%']}
+                    >
                         <Box>
                             <Heading
                                 lineHeight="1.272"
@@ -76,7 +84,7 @@ const Footer = () => {
                         </form>
                     </Flex>
                     <Grid
-                        flexBasis={'70%'}
+                        flexBasis={['100%', '100%', '50%', '70%']}
                         templateAreas={[
                             `
                                 "quick-links resources"
@@ -85,6 +93,10 @@ const Footer = () => {
                             `
                                 
                                 "quick-links resources"
+                                "legal social-media"
+                            `,
+                            `
+s                                "quick-links resources"
                                 "legal social-media"
                             `,
                             `
