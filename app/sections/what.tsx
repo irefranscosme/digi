@@ -21,7 +21,7 @@ const What = () => {
                 'repeat(1, 1fr)',
                 'repeat(2, 1fr)',
             ]}
-            paddingBlock={['20', '20', '20', '0']}
+            paddingBlock={['20', '20', '20', '20']}
             alignItems={['unset', 'unset', 'center']}
             gap="8"
         >
