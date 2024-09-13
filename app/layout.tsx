@@ -21,44 +21,44 @@ export default function RootLayout({
             </Head>
             <body>
                 <Providers>
-                    <Container
-                        maxWidth={['auto', 'auto', '140ch']}
-                        px={['1em', '1em', '2em']}
-                    >
-                        <Grid
-                            templateAreas={`
+                    <Grid
+                        templateAreas={`
                             "header header"
                             "main main"
                             "footer footer"
                         `}
-                            gridTemplateRows={'auto 1fr auto'}
-                            gridTemplateColumns={'1fr'}
-                            // border={'1px solid'}
-                        >
-                            <GridItem
-                                area={'header'}
-                                my="auto"
-                                paddingTop={'1em'}
-                                // border={'1px solid red'}
+                        gridTemplateRows={'auto 1fr auto'}
+                        gridTemplateColumns={'1fr'}
+                    >
+                        <GridItem area={'header'} my="auto" paddingTop={'1em'}>
+                            <Container
+                                maxWidth={['auto', 'auto', '140ch']}
+                                px={['1em', '1em', '2em']}
                             >
                                 <Header />
-                            </GridItem>
-                            <GridItem
-                                area={'main'}
-                                my="auto"
-                                // border={'1px solid red'}
+                            </Container>
+                        </GridItem>
+                        <GridItem area={'main'} my="auto">
+                            <Container
+                                maxWidth={['auto', 'auto', '140ch']}
+                                px={['1em', '1em', '2em']}
                             >
                                 {children}
-                            </GridItem>
-                            <GridItem
-                                area={'footer'}
-                                my="auto"
-                                // border={'1px solid red'}
+                            </Container>
+                        </GridItem>
+                        <GridItem
+                            area={'footer'}
+                            my="auto"
+                            backgroundColor={'brand.secondary'}
+                        >
+                            <Container
+                                maxWidth={['auto', 'auto', '140ch']}
+                                px={['1em', '1em', '2em']}
                             >
                                 <Footer />
-                            </GridItem>
-                        </Grid>
-                    </Container>
+                            </Container>
+                        </GridItem>
+                    </Grid>
                 </Providers>
             </body>
         </html>
