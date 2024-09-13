@@ -68,6 +68,7 @@ const How = () => {
                                 >
                                     Step 1
                                 </Heading>
+
                                 <Image
                                     src="/assets/icons/user-salary.svg"
                                     alt="types-of-diversification.png"
