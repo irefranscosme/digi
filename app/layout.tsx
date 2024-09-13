@@ -27,9 +27,9 @@ export default function RootLayout({
                     >
                         <Grid
                             templateAreas={`
-                            "header"
-                            "main"
-                            "footer"
+                            "header header"
+                            "main main"
+                            "footer footer"
                         `}
                             gridTemplateRows={'auto 1fr auto'}
                             gridTemplateColumns={'1fr'}

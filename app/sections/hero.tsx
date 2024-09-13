@@ -25,7 +25,7 @@ const Hero = () => {
             alignItems={['unset', 'unset', 'center']}
         >
             <GridItem>
-                <Flex flexDirection="column" flexBasis="50%" gap="4">
+                <Flex flexDirection="column" gap="4">
                     <Flex flexDirection="column" gap="2">
                         <Flex gap="1" flexDirection="column">
                             <Text

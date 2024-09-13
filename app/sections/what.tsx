@@ -21,13 +21,11 @@ const What = () => {
                 'repeat(1, 1fr)',
                 'repeat(2, 1fr)',
             ]}
-            justifyContent="space-between"
-            alignContent="space-between"
             paddingBlock={['20', '20', '20', '0']}
             alignItems={['unset', 'unset', 'center']}
         >
             <GridItem>
-                <Flex flexDirection="column" basis="50%" gap="4">
+                <Flex flexDirection="column" gap="4">
                     <Box>
                         <Text
                             lineHeight="1.618"
@@ -41,7 +39,7 @@ const What = () => {
                         <Heading
                             color={'brand.primary'}
                             lineHeight="1.272"
-                            letterSpacing="0.4em"
+                            letterSpacing={['0.1em', '0.2em', '0.3em', '0.4em']}
                             fontSize="2.058em"
                             textAlign={['center', 'center', 'start']}
                             textTransform={'uppercase'}
@@ -50,7 +48,7 @@ const What = () => {
                             Diversification?
                         </Heading>
                         <Text
-                            maxW={['auto', 'auto', 'auto', '2xl']}
+                            // maxW={['auto', 'auto', 'auto', '2xl']}
                             lineHeight="1.618"
                             letterSpacing="-0.011"
                             textAlign={['center', 'center', 'start']}
@@ -68,6 +66,8 @@ const What = () => {
                             'space-between',
                             'start',
                         ]}
+                        alignItems={'center'}
+                        gap={[20, 20, 30, 40]}
                     >
                         <Stack>
                             <Flex gap="4" alignItems="start">
@@ -80,7 +80,6 @@ const What = () => {
                                 />
                                 <Box>
                                     <Heading
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1.272em"
@@ -88,7 +87,6 @@ const What = () => {
                                         Income Diversification
                                     </Heading>
                                     <Text
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1em"
@@ -110,7 +108,6 @@ const What = () => {
                                 />
                                 <Box>
                                     <Heading
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1.272em"
@@ -118,7 +115,6 @@ const What = () => {
                                         Investment Diversification
                                     </Heading>
                                     <Text
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1em"
@@ -140,7 +136,6 @@ const What = () => {
                                 />
                                 <Box>
                                     <Heading
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1.272em"
@@ -148,7 +143,6 @@ const What = () => {
                                         Savings Diversification
                                     </Heading>
                                     <Text
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1em"
@@ -172,7 +166,6 @@ const What = () => {
                                 />
                                 <Box>
                                     <Heading
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1.272em"
@@ -180,7 +173,6 @@ const What = () => {
                                         Business Diversification
                                     </Heading>
                                     <Text
-                                        maxW="lg"
                                         lineHeight="1.618"
                                         letterSpacing="-0.011"
                                         fontSize="1em"
@@ -196,15 +188,11 @@ const What = () => {
                         <Flex
                             isolation="isolate"
                             position="relative"
-                            justifyContent={'center'}
-                            alignItems="center"
-                            // padding={'1em'}
-                            mx={'auto'}
                             display={['none', 'none', 'block', 'none']}
                         >
                             <Flex
-                                maxWidth={['40em', '40em', '40em', '40em']}
                                 alignItems={'center'}
+                                minW={['22em', '22em', '22em', '22em']}
                             >
                                 <Image
                                     src="/assets/types-of-diversification.png"
@@ -249,33 +237,28 @@ const What = () => {
                 <Flex
                     isolation="isolate"
                     position="relative"
-                    justifyContent={'center'}
-                    alignItems="center"
-                    mt="2em"
-                    margin={'1em'}
-                    maxWidth={'30em'}
-                    mx={'auto'}
+                    maxW={['30em']}
+                    mx="auto"
                 >
                     <Image
                         src="/assets/types-of-diversification.png"
                         alt="types-of-diversification.png"
                         borderBottomRadius="128px"
-                        position="relative"
                     />
                     <Flex
-                        width="20"
+                        width="4em"
                         position="absolute"
-                        top="-2.8em"
-                        left="-2.8em"
+                        top="-2.1em"
+                        left="-2.1em"
                         zIndex="1"
                     >
                         <Image src="/assets/multiply.png" alt="multiply.png" />
                     </Flex>
                     <Flex
-                        width="4em"
+                        width="3em"
                         position="absolute"
                         top="-1.2em"
-                        right="-2em"
+                        right="-1.2em"
                         zIndex="1"
                     >
                         <Image src="/assets/equal.png" alt="equal.png" />
