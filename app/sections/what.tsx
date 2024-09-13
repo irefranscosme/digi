@@ -28,10 +28,10 @@ const What = () => {
                 <Flex flexDirection="column" gap="4">
                     <Box>
                         <Text
+                            textTransform="uppercase"
                             lineHeight="1.618"
                             letterSpacing="-0.011"
-                            fontSize={'1.618em'}
-                            fontWeight={'thin'}
+                            fontWeight="semibold"
                             textAlign={['center', 'center', 'start']}
                         >
                             What is?
