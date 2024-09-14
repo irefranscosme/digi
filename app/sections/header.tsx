@@ -4,10 +4,10 @@ import {
     Flex,
     Image,
     ListItem,
-    Text,
     UnorderedList,
 } from '@chakra-ui/react';
 import React from 'react';
+import NavLink from '../components/active-link';
 
 const Header = () => {
     return (
@@ -23,22 +23,39 @@ const Header = () => {
                     display="flex"
                     alignItems="center"
                 >
-                    <ListItem cursor="pointer">
-                        <Text>Home</Text>
-                    </ListItem>
-                    <ListItem>
-                        <Text>Savings</Text>
-                    </ListItem>
                     <ListItem
+                        cursor="pointer"
                         _hover={{
                             color: 'brand.primary',
                             opacity: 1,
                         }}
                     >
-                        <Text>Diversify</Text>
+                        <NavLink to="/">Home</NavLink>
+                    </ListItem>
+                    <ListItem
+                        cursor="pointer"
+                        _hover={{
+                            color: 'brand.primary',
+                            opacity: 1,
+                        }}
+                    >
+                        <NavLink to="/savings">Savings</NavLink>
+                    </ListItem>
+                    <ListItem
+                        cursor="pointer"
+                        _hover={{
+                            color: 'brand.primary',
+                            opacity: 1,
+                        }}
+                    >
+                        <NavLink to="/diversify">Diversify</NavLink>
                     </ListItem>
                     <ListItem>
-                        <Button colorScheme="blue">Login</Button>
+                        <Button colorScheme="blue">
+                            <NavLink to="/login" color={'white'}>
+                                Login
+                            </NavLink>
+                        </Button>
                     </ListItem>
                 </UnorderedList>
             </Box>
