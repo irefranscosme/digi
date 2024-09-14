@@ -1,3 +1,4 @@
+import Google from '@/components/auth/google';
 import {
     Button,
     Container,
@@ -21,7 +22,7 @@ export const metadata = {
         'Access your Digi account and start managing multiple income streams. Log in to discover personalized strategies, track your earnings, and take control of your financial future.',
 };
 
-const Login = () => {
+const Page = () => {
     return (
         <Grid
             templateColumns="repeat(2, 1fr)"
@@ -132,18 +133,7 @@ const Login = () => {
                                             </Text>
                                             <Divider />
                                         </Flex>
-                                        <Button
-                                            // colorScheme="text"
-                                            width="100%"
-                                            leftIcon={
-                                                <Image
-                                                    src="assets/icons/google.png"
-                                                    width="1.2em"
-                                                />
-                                            }
-                                        >
-                                            Continue with Google
-                                        </Button>
+                                        <Google />
                                     </Flex>
                                 </Flex>
                             </Container>
@@ -163,4 +153,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Page;
