@@ -68,7 +68,6 @@ const How = () => {
                                 >
                                     Step 1
                                 </Heading>
-
                                 <Image
                                     src="/assets/icons/user-salary.svg"
                                     alt="types-of-diversification.png"
@@ -78,9 +77,9 @@ const How = () => {
                             </Flex>
                             <Flex gap="4" flexDirection="column">
                                 <Heading
-                                    lineHeight="1.618em"
-                                    letterSpacing="-0.011em"
-                                    fontSize="1.272em"
+                                    lineHeight="1.272em"
+                                    letterSpacing="-0.014em"
+                                    fontSize="1.129em"
                                     fontWeight="bold"
                                 >
                                     Input your salary
@@ -125,9 +124,9 @@ const How = () => {
                             </Flex>
                             <Flex gap="4" flexDirection="column">
                                 <Heading
-                                    lineHeight="1.618em"
-                                    letterSpacing="-0.011em"
-                                    fontSize="1.272em"
+                                    lineHeight="1.272em"
+                                    letterSpacing="-0.014em"
+                                    fontSize="1.129em"
                                     fontWeight="bold"
                                 >
                                     Choose Your Diversification Categories
@@ -182,9 +181,9 @@ const How = () => {
                             </Flex>
                             <Flex gap="4" flexDirection="column">
                                 <Heading
-                                    lineHeight="1.618em"
-                                    letterSpacing="-0.011em"
-                                    fontSize="1.272em"
+                                    lineHeight="1.272em"
+                                    letterSpacing="-0.014em"
+                                    fontSize="1.129em"
                                     fontWeight="bold"
                                 >
                                     Set Goals and Review
