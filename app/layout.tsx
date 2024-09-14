@@ -1,7 +1,6 @@
 import { Container, Grid, GridItem } from '@chakra-ui/react';
 import Header from './sections/header';
 import { Providers } from './providers';
-import Head from 'next/head';
 import Footer from './sections/footer';
 
 export default function RootLayout({
@@ -11,14 +10,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Head>
-                <link
-                    rel="icon"
-                    href="/DIGI-removebg-preview.ico"
-                    type="image/ico"
-                    sizes="any"
-                />
-            </Head>
             <body>
                 <Providers>
                     <Grid
