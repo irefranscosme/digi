@@ -42,7 +42,6 @@ export default function RootLayout({
                             area={'footer'}
                             my="auto"
                             backgroundColor={'brand.secondary'}
-                            border={'1px solid'}
                             height={'100%'}
                         >
                             <Container
