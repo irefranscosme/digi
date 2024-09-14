@@ -7,7 +7,7 @@ import {
     UnorderedList,
 } from '@chakra-ui/react';
 import React from 'react';
-import NavLink from '../components/active-link';
+import NavLink from './active-link';
 
 const Header = () => {
     return (
