@@ -18,8 +18,9 @@ export default function RootLayout({
                             "main main"
                             "footer footer"
                         `}
-                        gridTemplateRows={'auto 1fr auto'}
+                        gridTemplateRows={'auto auto 1fr'}
                         gridTemplateColumns={'1fr'}
+                        height={'100%'}
                     >
                         <GridItem area={'header'} my="auto" paddingTop={'1em'}>
                             <Container
@@ -41,6 +42,8 @@ export default function RootLayout({
                             area={'footer'}
                             my="auto"
                             backgroundColor={'brand.secondary'}
+                            border={'1px solid'}
+                            height={'100%'}
                         >
                             <Container
                                 maxWidth={['auto', 'auto', '140ch']}
