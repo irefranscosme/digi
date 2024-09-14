@@ -68,7 +68,7 @@ const Hero = () => {
             <GridItem>
                 <Box>
                     <Image
-                        src="/assets/hero.png"
+                        src="/assets/backgrounds/hero.png"
                         alt="hero.png"
                         objectFit="contain"
                         minHeight="20em"
