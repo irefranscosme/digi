@@ -7,9 +7,9 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 
 export const metadata = {
-    title: 'DIGI',
+    title: 'Dashboard',
     description:
-        'Simplify your financial planning with DIGI where smart diversification meets effortless management.',
+        "Manage and diversify your income with Digi's intuitive dashboard. Track savings, bank accounts, emergency funds, and investments, all in one place. Gain financial control with personalized insights and smarter income diversification strategies.",
 };
 
 export default function Home() {
