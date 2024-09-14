@@ -64,6 +64,9 @@ const customeTheme: ThemeOverride = {
                 MozOsxFontSmoothing: 'grayscale',
                 fontSmooth: 'never',
             },
+            'html, body': {
+                height: '100%',
+            },
         },
     },
 };
