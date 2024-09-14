@@ -4,13 +4,16 @@ import NavLink from './components/active-link';
 export default function NotFound() {
     return (
         <Flex
-            // minHeight="100vh"
-            flexDirection="row"
             justifyContent="flex-start"
             paddingBlock="20"
             position="relative"
+            flexDirection={['column', 'column', 'column', 'row']}
         >
-            <Flex flexDirection="column" gap="4" flexBasis="60%">
+            <Flex
+                flexDirection={['row', 'column']}
+                gap="4"
+                flexBasis={['60%', '60%', '60%', '100%']}
+            >
                 <Flex flexDirection="column" marginTop="4em">
                     <Text
                         textTransform="uppercase"
