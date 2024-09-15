@@ -1,9 +1,4 @@
-import {
-    extendTheme,
-    ThemeConfig,
-    ThemeOverride,
-    theme as baseTheme,
-} from '@chakra-ui/react';
+import { extendTheme, ThemeConfig, ThemeOverride } from '@chakra-ui/react';
 import '@fontsource/be-vietnam-pro/300.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/400.css'; // Normal weight
 import '@fontsource/be-vietnam-pro/500.css'; // Medium weight
@@ -21,12 +16,28 @@ const colors = {
         tertiary: tertiary,
     },
     blue: {
-        ...baseTheme.colors.blue,
-        500: primary, // Default blue
+        50: '#9abef5',
+        100: '#85b1f3',
+        200: '#71a4f1',
+        300: '#5d97ef',
+        400: '#488aed',
+        500: primary,
+        600: '#2f71d4',
+        700: '#2a64bc',
+        800: '#2458a5',
+        900: '#1f4b8d',
     },
     gray: {
-        ...baseTheme.colors.gray,
+        50: '#a6acb5',
+        100: '#949ba6',
+        200: '#828b97',
+        300: '#717a89',
+        400: '#5f6a7a',
         500: secondary,
+        600: '#455060',
+        700: '#3e4756',
+        800: '#363e4b',
+        900: '#2e3540',
     },
 };
 
