@@ -49,13 +49,9 @@ const Footer = ({ session }: { session: Session }) => {
                                 />
                             </MenuButton>
                             <MenuList>
-                                <MenuItem _hover={{ color: 'white' }}>
-                                    View profile
-                                </MenuItem>
-                                <MenuItem _hover={{ color: 'white' }}>
-                                    Settings
-                                </MenuItem>
-                                <MenuItem _hover={{ color: 'white' }}>
+                                <MenuItem>View profile</MenuItem>
+                                <MenuItem>Settings</MenuItem>
+                                <MenuItem>
                                     <Logout />
                                 </MenuItem>
                             </MenuList>

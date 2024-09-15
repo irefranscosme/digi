@@ -49,7 +49,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                 gridArea="sidebar"
                 height="100%"
                 px="4"
-                // backgroundColor="red"
+                backgroundColor="gray.200"
             >
                 <Flex justifyContent="space-between" height="inherit">
                     <Grid
