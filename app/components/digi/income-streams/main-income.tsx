@@ -10,11 +10,7 @@ import {
     Image,
     Text,
 } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
 import CreateIncomeDrawer from './create-income-drawer';
-// import CreateButton from './create-button';
-
-// const CreateIncomeDrawer = dynamic(() => import('./create-income-drawer'));
 
 const incomeLists = [
     {
@@ -46,7 +42,7 @@ const incomeLists = [
         ],
     },
     {
-        id: 1,
+        id: 2,
         income_type: 'Job',
         job_title: 'Web Developer',
         job_location: 'On-site',
@@ -79,126 +75,131 @@ const MainIncome = () => {
     console.log('main income');
     return (
         <Flex flexDirection="column" gap="4">
-            {/* <CreateButton /> */}
             <CreateIncomeDrawer />
             <Grid gap="2" templateColumns="repeat(2, 1fr)">
                 {incomeLists.map((income) => (
                     <GridItem key={income.id}>
-                        <Card>
+                        <Card overflow="clip">
                             <CardHeader>
                                 <Heading size="md">
                                     {income.job_title} - {income.income_type}
                                 </Heading>
                             </CardHeader>
 
-                            <CardBody position="relative" overflow="hidden">
-                                <Grid
-                                    gap="2"
-                                    templateColumns="repeat(2, 1fr)"
-                                    maxWidth="sm"
-                                >
-                                    <GridItem>
-                                        <Heading
-                                            fontSize="1.129em"
-                                            lineHeight="1.272"
-                                            letterSpacing="-0.014em"
-                                            color="gray.400"
-                                            fontWeight="medium"
-                                        >
-                                            Salary
-                                        </Heading>
-                                        <Text
-                                            fontSize="1em"
-                                            lineHeight="1.618"
-                                            letterSpacing="-0.011em"
-                                        >
-                                            {income.salary}
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem>
-                                        <Heading
-                                            fontSize="1.129em"
-                                            lineHeight="1.272"
-                                            letterSpacing="-0.014em"
-                                            color="gray.400"
-                                            fontWeight="medium"
-                                        >
-                                            Employment
-                                        </Heading>
-                                        <Text
-                                            fontSize="1em"
-                                            lineHeight="1.618"
-                                            letterSpacing="-0.011em"
-                                        >
-                                            {income.employment_type}
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem>
-                                        <Heading
-                                            fontSize="1.129em"
-                                            lineHeight="1.272"
-                                            letterSpacing="-0.014em"
-                                            color="gray.400"
-                                            fontWeight="medium"
-                                        >
-                                            Job Location
-                                        </Heading>
-                                        <Text
-                                            fontSize="1em"
-                                            lineHeight="1.618"
-                                            letterSpacing="-0.011em"
-                                        >
-                                            {income.job_location}
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem>
-                                        <Heading
-                                            fontSize="1.129em"
-                                            lineHeight="1.272"
-                                            letterSpacing="-0.014em"
-                                            color="gray.400"
-                                            fontWeight="medium"
-                                        >
-                                            Work Schedule
-                                        </Heading>
-                                        <Text
-                                            fontSize="1em"
-                                            lineHeight="1.618"
-                                            letterSpacing="-0.011em"
-                                        >
-                                            {income.work_schedule}
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem>
-                                        <Heading
-                                            fontSize="1.129em"
-                                            lineHeight="1.272"
-                                            letterSpacing="-0.014em"
-                                            color="gray.400"
-                                            fontWeight="medium"
-                                        >
-                                            Travel Cost
-                                        </Heading>
-                                        <Text
-                                            fontSize="1em"
-                                            lineHeight="1.618"
-                                            letterSpacing="-0.011em"
-                                        >
-                                            {income.travel_cost}
-                                        </Text>
-                                    </GridItem>
-                                </Grid>
-                                <Box
-                                    position="absolute"
-                                    bottom="-2em"
-                                    right="-7.6em"
-                                >
-                                    <Image
-                                        src="assets/backgrounds/suitcase.png"
-                                        alt="suitcase.png"
-                                        width="15em"
-                                    />
-                                </Box>
+                            <CardBody overflow="hidden">
+                                <Flex justifyContent="space-between">
+                                    <Grid
+                                        gap="2"
+                                        templateColumns="repeat(2, 1fr)"
+                                        maxWidth="sm"
+                                        flexGrow={1}
+                                    >
+                                        <GridItem>
+                                            <Heading
+                                                fontSize="1em"
+                                                lineHeight="1.272"
+                                                letterSpacing="-0.014em"
+                                                color="gray.400"
+                                                fontWeight="medium"
+                                            >
+                                                Salary
+                                            </Heading>
+                                            <Text
+                                                fontSize="1em"
+                                                lineHeight="1.618"
+                                                letterSpacing="-0.011em"
+                                            >
+                                                {income.salary}
+                                            </Text>
+                                        </GridItem>
+                                        <GridItem>
+                                            <Heading
+                                                fontSize="1em"
+                                                lineHeight="1.272"
+                                                letterSpacing="-0.014em"
+                                                color="gray.400"
+                                                fontWeight="medium"
+                                            >
+                                                Employment
+                                            </Heading>
+                                            <Text
+                                                fontSize="1em"
+                                                lineHeight="1.618"
+                                                letterSpacing="-0.011em"
+                                            >
+                                                {income.employment_type}
+                                            </Text>
+                                        </GridItem>
+                                        <GridItem>
+                                            <Heading
+                                                fontSize="1em"
+                                                lineHeight="1.272"
+                                                letterSpacing="-0.014em"
+                                                color="gray.400"
+                                                fontWeight="medium"
+                                            >
+                                                Job Location
+                                            </Heading>
+                                            <Text
+                                                fontSize="1em"
+                                                lineHeight="1.618"
+                                                letterSpacing="-0.011em"
+                                            >
+                                                {income.job_location}
+                                            </Text>
+                                        </GridItem>
+                                        <GridItem>
+                                            <Heading
+                                                fontSize="1em"
+                                                lineHeight="1.272"
+                                                letterSpacing="-0.014em"
+                                                color="gray.400"
+                                                fontWeight="medium"
+                                            >
+                                                Work Schedule
+                                            </Heading>
+                                            <Text
+                                                fontSize="1em"
+                                                lineHeight="1.618"
+                                                letterSpacing="-0.011em"
+                                            >
+                                                {income.work_schedule}
+                                            </Text>
+                                        </GridItem>
+                                        <GridItem>
+                                            <Heading
+                                                fontSize="1em"
+                                                lineHeight="1.272"
+                                                letterSpacing="-0.014em"
+                                                color="gray.400"
+                                                fontWeight="medium"
+                                            >
+                                                Travel Cost
+                                            </Heading>
+                                            <Text
+                                                fontSize="1em"
+                                                lineHeight="1.618"
+                                                letterSpacing="-0.011em"
+                                            >
+                                                {income.travel_cost}
+                                            </Text>
+                                        </GridItem>
+                                    </Grid>
+                                    <Box
+                                        position="absolute"
+                                        top="4em"
+                                        right="-7.6em"
+                                        overflow="hidden"
+                                        borderRadius="0.4em"
+                                        height="100%"
+                                    >
+                                        <Image
+                                            src="assets/backgrounds/suitcase.png"
+                                            alt="suitcase.png"
+                                            width="15em"
+                                        />
+                                    </Box>
+                                </Flex>
                             </CardBody>
                         </Card>
                     </GridItem>
