@@ -1,14 +1,25 @@
 import DashboardIcon from '@/components/icons/dashboard';
+import MenuDotIcon from '@/components/icons/menu-dot';
 import MoneyIcomeIcon from '@/components/icons/money-income';
 import SideNavLink from '@/components/side-nav-link';
+import Footer from '@/components/sidebar/footer';
 import {
     Avatar,
+    AvatarBadge,
+    Box,
+    Button,
     Flex,
     Grid,
     GridItem,
+    Heading,
     Image,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList,
     Spinner,
     Stack,
+    Text,
 } from '@chakra-ui/react';
 import { getServerSession } from 'next-auth';
 import React, { ReactNode } from 'react';
@@ -26,7 +37,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     return (
         <Grid
             templateAreas={`
-                "sidebar header"
+                "sidebar main"
                 "sidebar main"
                 "sidebar main"
             `}
@@ -34,19 +45,24 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             gridTemplateColumns={'20% 1fr'}
             height="100%"
         >
-            <GridItem gridArea="sidebar" height="100%">
+            <GridItem
+                gridArea="sidebar"
+                height="100%"
+                px="4"
+                // backgroundColor="red"
+            >
                 <Flex justifyContent="space-between" height="inherit">
                     <Grid
                         templateRows={'repeat(3, 1fr)'}
                         gridTemplateRows={'auto 1fr auto'}
                         width="100%"
+                        gap="2"
                     >
-                        <GridItem>
+                        <GridItem py="8">
                             <Flex
                                 width="inherit"
                                 justifyContent="flex-start"
                                 alignItems="center"
-                                padding="4"
                             >
                                 <Image
                                     src="assets/digi.png"
@@ -55,7 +71,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                                 />
                             </Flex>
                         </GridItem>
-                        <GridItem width="100%" px="4">
+                        <GridItem width="100%">
                             <Flex width="100%" flexDirection="column" gap="2">
                                 <SideNavLink
                                     to="/dashboard"
@@ -101,25 +117,15 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                                 </SideNavLink>
                             </Flex>
                         </GridItem>
-                        <GridItem>Footer</GridItem>
+                        <GridItem py="8">
+                            <Footer session={session} />
+                        </GridItem>
                     </Grid>
                 </Flex>
             </GridItem>
-            <GridItem gridArea="header">
-                <Flex py="2" px="3">
-                    <Stack>
-                        <Avatar
-                            src={session?.user?.image || undefined}
-                            size="sm"
-                            sx={{
-                                border: '1px',
-                                borderColor: 'gray.200',
-                            }}
-                        />
-                    </Stack>
-                </Flex>
+            <GridItem gridArea="main" padding="2">
+                {children}
             </GridItem>
-            <GridItem gridArea="main">{children}</GridItem>
         </Grid>
     );
 };
