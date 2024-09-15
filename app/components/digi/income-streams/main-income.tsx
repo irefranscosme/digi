@@ -1,6 +1,3 @@
-'use server';
-
-import React from 'react';
 import {
     Box,
     Card,
@@ -13,7 +10,11 @@ import {
     Image,
     Text,
 } from '@chakra-ui/react';
-import CreateButton from './create-button';
+import dynamic from 'next/dynamic';
+import CreateIncomeDrawer from './create-income-drawer';
+// import CreateButton from './create-button';
+
+// const CreateIncomeDrawer = dynamic(() => import('./create-income-drawer'));
 
 const incomeLists = [
     {
@@ -74,10 +75,12 @@ const incomeLists = [
     },
 ];
 
-const MainIcome = async () => {
+const MainIncome = () => {
+    console.log('main income');
     return (
         <Flex flexDirection="column" gap="4">
-            <CreateButton />
+            {/* <CreateButton /> */}
+            <CreateIncomeDrawer />
             <Grid gap="2" templateColumns="repeat(2, 1fr)">
                 {incomeLists.map((income) => (
                     <GridItem key={income.id}>
@@ -205,4 +208,4 @@ const MainIcome = async () => {
     );
 };
 
-export default MainIcome;
+export default MainIncome;

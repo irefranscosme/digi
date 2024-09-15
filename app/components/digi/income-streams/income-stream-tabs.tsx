@@ -12,13 +12,8 @@ import {
     Text,
     theme,
 } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-
-const MainIncome = dynamic(
-    () => import('@/components/digi/income-streams/main-income'),
-    { ssr: false, loading: () => <Spinner /> },
-);
+import MainIncome from './main-income';
 
 const IncomeStreamTabs = () => {
     const [tab, setTab] = useState<string>('main-income');

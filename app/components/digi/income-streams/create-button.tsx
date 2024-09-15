@@ -1,12 +1,13 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
-import React from 'react';
+'use server';
 
-const CreateButton = async () => {
-    return (
-        <Box>
-            <Button>Create</Button>
-        </Box>
-    );
+import dynamic from 'next/dynamic';
+
+const CreateIncomeDrawer = dynamic(() => import('./create-income-drawer'), {
+    ssr: false,
+});
+
+const CreateButton = () => {
+    return <CreateIncomeDrawer />;
 };
 
 export default CreateButton;
