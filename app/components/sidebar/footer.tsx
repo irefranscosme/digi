@@ -18,16 +18,16 @@ import Logout from '../auth/logout';
 
 const Footer = ({ session }: { session: Session }) => {
     return (
-        <Flex direction="row" gap="2" flexGrow="1" px="4">
+        <Flex direction="row" gap="4" flexGrow="1" px="4">
             <Avatar
                 src={session?.user?.image || undefined}
                 size="md"
                 sx={{
-                    border: '1px solid',
+                    border: '4px',
                     borderColor: 'gray.50',
                 }}
             >
-                <AvatarBadge boxSize="1em" bg="green.500" />
+                <AvatarBadge boxSize="0.75em" bg="green.500" />
             </Avatar>
             <Flex flexDirection="column" flexGrow="1">
                 <Flex justifyContent="space-between" alignItems="center">
@@ -61,7 +61,7 @@ const Footer = ({ session }: { session: Session }) => {
                 <Text
                     fontSize="0.885em"
                     lineHeight="1.272em"
-                    letterSpacing="-0.007em"
+                    letterSpacing="-0.011em"
                     opacity={0.8}
                 >
                     {session?.user?.email}
