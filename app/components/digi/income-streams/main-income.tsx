@@ -3,7 +3,6 @@
 import React from 'react';
 import {
     Box,
-    Button,
     Card,
     CardBody,
     CardHeader,
@@ -12,10 +11,9 @@ import {
     GridItem,
     Heading,
     Image,
-    Stack,
-    StackDivider,
     Text,
 } from '@chakra-ui/react';
+import CreateButton from './create-button';
 
 const incomeLists = [
     {
@@ -79,9 +77,7 @@ const incomeLists = [
 const MainIcome = async () => {
     return (
         <Flex flexDirection="column" gap="4">
-            <Box>
-                <Button>Create</Button>
-            </Box>
+            <CreateButton />
             <Grid gap="2" templateColumns="repeat(2, 1fr)">
                 {incomeLists.map((income) => (
                     <GridItem key={income.id}>
@@ -192,7 +188,7 @@ const MainIcome = async () => {
                                 <Box
                                     position="absolute"
                                     bottom="-2em"
-                                    right="-7em"
+                                    right="-7.6em"
                                 >
                                     <Image
                                         src="assets/backgrounds/suitcase.png"
