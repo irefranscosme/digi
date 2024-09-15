@@ -1,5 +1,3 @@
-import Box from 'next-auth/providers/box';
-import * as React from 'react';
 const MenuDotIcon = ({
     color,
     width = '24',

@@ -1,4 +1,3 @@
-import * as React from 'react';
 const DashboardIcon = ({
     color,
     width = '24',

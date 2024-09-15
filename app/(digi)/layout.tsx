@@ -1,3 +1,4 @@
+import ChartMixDollarIcon from '@/components/icons/chart-mix-dollar';
 import DashboardIcon from '@/components/icons/dashboard';
 import MenuDotIcon from '@/components/icons/menu-dot';
 import MoneyIcomeIcon from '@/components/icons/money-income';
@@ -96,14 +97,14 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                                     to="/income-streams"
                                     width="100%"
                                     hoverIcon={
-                                        <MoneyIcomeIcon
+                                        <ChartMixDollarIcon
                                             color="white"
                                             width="20"
                                             height="20"
                                         />
                                     }
                                     defaultIcon={
-                                        <MoneyIcomeIcon
+                                        <ChartMixDollarIcon
                                             color="black"
                                             width="20"
                                             height="20"
@@ -120,7 +121,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                     </Grid>
                 </Flex>
             </GridItem>
-            <GridItem gridArea="main" padding="2">
+            <GridItem gridArea="main" py="8" px="10">
                 {children}
             </GridItem>
         </Grid>
