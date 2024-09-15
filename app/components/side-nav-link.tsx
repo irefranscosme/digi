@@ -1,6 +1,6 @@
 'use client';
 
-import { Link as ChakraLink, Flex, LinkProps } from '@chakra-ui/react';
+import { Box, Link as ChakraLink, Flex, LinkProps } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
@@ -34,15 +34,30 @@ function SideNavLink({
                 as={Link}
                 {...props}
                 {...activeProps}
-                _hover={{ color: 'white', fill: 'white' }}
+                _hover={{ fill: 'white' }}
                 color="white"
-                borderRadius="8"
-                paddingBlock="2"
-                backgroundColor="blue.500"
+                // backgroundColor="blue.50"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <Flex flexDirection="row" gap="4" alignItems="center">
+                <Flex
+                    flexDirection="row"
+                    gap="4"
+                    alignItems="center"
+                    position="relative"
+                    bg={'blue.500'}
+                    _before={{
+                        content: '""', // or use an emoji or special character
+                        position: 'absolute',
+                        left: '0', // adjust positioning as needed
+                        color: 'blue', // or any color
+                        width: '0.2em',
+                        height: '50%',
+                        backgroundColor: 'white',
+                    }}
+                    paddingBlock="2"
+                    px="4"
+                >
                     {isActive ? hoverIcon : defaultIcon}
                     {children}
                 </Flex>
@@ -58,11 +73,10 @@ function SideNavLink({
             _hover={{ color: 'white', backgroundColor: 'blue.500' }}
             color={color}
             paddingBlock="2"
-            borderRadius="8"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Flex flexDirection="row" gap="4" alignItems="center">
+            <Flex flexDirection="row" gap="4" alignItems="center" px="4">
                 {isHovered ? hoverIcon : defaultIcon}
                 {children}
             </Flex>

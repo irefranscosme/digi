@@ -48,7 +48,6 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             <GridItem
                 gridArea="sidebar"
                 height="100%"
-                px="4"
                 backgroundColor="gray.200"
             >
                 <Flex justifyContent="space-between" height="inherit">
@@ -58,7 +57,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                         width="100%"
                         gap="2"
                     >
-                        <GridItem py="8">
+                        <GridItem py="8" px="4">
                             <Flex
                                 width="inherit"
                                 justifyContent="flex-start"
@@ -72,11 +71,10 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                             </Flex>
                         </GridItem>
                         <GridItem width="100%">
-                            <Flex width="100%" flexDirection="column" gap="2">
+                            <Flex width="100%" flexDirection="column" gap="1">
                                 <SideNavLink
                                     to="/dashboard"
                                     width="100%"
-                                    px="4"
                                     hoverIcon={
                                         <DashboardIcon
                                             color="white"
@@ -97,7 +95,6 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                                 <SideNavLink
                                     to="/income-streams"
                                     width="100%"
-                                    px="4"
                                     hoverIcon={
                                         <MoneyIcomeIcon
                                             color="white"

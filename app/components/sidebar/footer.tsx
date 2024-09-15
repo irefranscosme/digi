@@ -18,7 +18,7 @@ import Logout from '../auth/logout';
 
 const Footer = ({ session }: { session: Session }) => {
     return (
-        <Flex direction="row" gap="2" flexGrow="1">
+        <Flex direction="row" gap="2" flexGrow="1" px="4">
             <Avatar
                 src={session?.user?.image || undefined}
                 size="md"
