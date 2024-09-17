@@ -3,7 +3,6 @@
 import MoneySackIcon from '@/components/icons/money-sack';
 import {
     Flex,
-    Spinner,
     Tab,
     TabList,
     TabPanel,
@@ -14,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import MainIncome from './main-income';
+import LaptopMobileIcon from '@/components/icons/laptop-mobile';
 
 const IncomeStreamTabs = () => {
     const [tab, setTab] = useState<string>('main-income');
@@ -36,7 +36,7 @@ const IncomeStreamTabs = () => {
                 </Tab>
                 <Tab onClick={() => setTab('freelance-part-time')}>
                     <Flex alignItems="center" gap="4">
-                        <MoneySackIcon
+                        <LaptopMobileIcon
                             color={
                                 tab === 'freelance-part-time'
                                     ? theme.colors.blue[500]
