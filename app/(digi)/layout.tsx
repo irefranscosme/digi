@@ -1,27 +1,8 @@
 import ChartMixDollarIcon from '@/components/icons/chart-mix-dollar';
 import DashboardIcon from '@/components/icons/dashboard';
-import MenuDotIcon from '@/components/icons/menu-dot';
-import MoneyIcomeIcon from '@/components/icons/money-income';
 import SideNavLink from '@/components/side-nav-link';
 import Footer from '@/components/sidebar/footer';
-import {
-    Avatar,
-    AvatarBadge,
-    Box,
-    Button,
-    Flex,
-    Grid,
-    GridItem,
-    Heading,
-    Image,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuList,
-    Spinner,
-    Stack,
-    Text,
-} from '@chakra-ui/react';
+import { Flex, Grid, GridItem, Image, Spinner, Stack } from '@chakra-ui/react';
 import { getServerSession } from 'next-auth';
 import React, { ReactNode } from 'react';
 

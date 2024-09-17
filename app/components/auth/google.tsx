@@ -8,7 +8,13 @@ const Google = () => {
     return (
         <Button
             width="100%"
-            leftIcon={<Image src="assets/icons/google.png" width="1.2em" />}
+            leftIcon={
+                <Image
+                    src="assets/icons/google.png"
+                    width="1.2em"
+                    alt="google.png"
+                />
+            }
             onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
         >
             Continue with Google

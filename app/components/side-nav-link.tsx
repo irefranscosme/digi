@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Link as ChakraLink, Flex, LinkProps } from '@chakra-ui/react';
+import { Link as ChakraLink, Flex, LinkProps } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
@@ -36,7 +36,6 @@ function SideNavLink({
                 {...activeProps}
                 _hover={{ fill: 'white' }}
                 color="white"
-                // backgroundColor="blue.50"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
@@ -47,10 +46,10 @@ function SideNavLink({
                     position="relative"
                     bg={'blue.500'}
                     _before={{
-                        content: '""', // or use an emoji or special character
+                        content: '""',
                         position: 'absolute',
-                        left: '0', // adjust positioning as needed
-                        color: 'blue', // or any color
+                        left: '0',
+                        color: 'blue',
                         width: '0.2em',
                         height: '50%',
                         backgroundColor: 'white',
