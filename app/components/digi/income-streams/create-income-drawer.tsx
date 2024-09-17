@@ -1,5 +1,6 @@
 'use client';
 
+import { MonthlyExpenses } from '@/types/expenses';
 import {
     Box,
     Button,
@@ -10,20 +11,23 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
+    Flex,
     FormControl,
-    FormHelperText,
     FormLabel,
     Heading,
     Input,
-    MenuOptionGroup,
     Select,
-    SelectField,
+    Stack,
     useDisclosure,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const CreateIncomeDrawer = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [expenses, setExpenses] = useState<MonthlyExpenses[]>([
+        { label: '', value: '' },
+    ]);
+
     const btnRef = useRef<HTMLButtonElement>(null);
     return (
         <>
@@ -58,20 +62,142 @@ const CreateIncomeDrawer = () => {
                     </DrawerHeader>
 
                     <DrawerBody>
-                        <FormControl>
-                            <FormLabel>Income type</FormLabel>
-                            <Select
-                                cursor="pointer"
-                                placeholder="Type of your income."
-                                bg="white"
-                                required
-                            >
-                                <option value="option1">Job</option>
-                                <option value="option2">Business</option>
-                                <option value="option3">Freelance</option>
-                                <option value="option3">Part-Time</option>
-                            </Select>
-                        </FormControl>
+                        <Stack gap="8">
+                            {/* JOB INFORMATION */}
+                            <Flex gap="4" flexDirection="column">
+                                <Flex gap="2" flexDirection="column">
+                                    <FormControl>
+                                        <FormLabel>Income type</FormLabel>
+                                        <Select
+                                            cursor="pointer"
+                                            placeholder="Type of your income."
+                                            bg="white"
+                                            required
+                                        >
+                                            <option value="job">Job</option>
+                                            <option value="business">
+                                                Business
+                                            </option>
+                                            <option value="freelance">
+                                                Freelance
+                                            </option>
+                                            <option value="part-time">
+                                                Part-Time
+                                            </option>
+                                        </Select>
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormLabel>Job Title</FormLabel>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter your job title."
+                                        />
+                                    </FormControl>
+                                </Flex>
+                                <Flex gap="2">
+                                    <FormControl>
+                                        <FormLabel>Job Type</FormLabel>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter job type."
+                                        />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormLabel>Job Location</FormLabel>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter job location."
+                                        />
+                                    </FormControl>
+                                </Flex>
+                            </Flex>
+                            {/* JOB SCHEDULE COST */}
+                            <Flex gap="4" flexDirection="column">
+                                <Flex gap="2" flexDirection="column">
+                                    <FormControl>
+                                        <FormLabel>Work Schedule</FormLabel>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter your work schedule."
+                                        />
+                                    </FormControl>
+                                    <FormControl>
+                                        <FormLabel>Travel Cost</FormLabel>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter amount."
+                                        />
+                                    </FormControl>
+                                </Flex>
+                            </Flex>
+                            {/* MONTHLY EXPENSE */}
+                            <Flex flexDirection="column" gap="4">
+                                <Flex
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                >
+                                    <FormLabel margin="0">
+                                        Monthly Expense
+                                    </FormLabel>
+                                    <Button
+                                        onClick={() => {
+                                            setExpenses((prevExpenses) => [
+                                                ...prevExpenses,
+                                                { label: '', value: '' },
+                                            ]);
+                                        }}
+                                    >
+                                        Add Expenses
+                                    </Button>
+                                </Flex>
+                                <Flex flexDirection="column" gap="4">
+                                    {expenses.map((expense, index) => (
+                                        <Flex
+                                            key={index}
+                                            flexDirection={'column'}
+                                            gap="2"
+                                        >
+                                            <FormControl>
+                                                <Flex
+                                                    gap="2"
+                                                    flexDirection="column"
+                                                >
+                                                    <Input
+                                                        type="text"
+                                                        placeholder="Enter your expense label."
+                                                        value={expense.label}
+                                                    />
+                                                    <Input
+                                                        type="text"
+                                                        placeholder="Enter your expense amount."
+                                                        value={expense.value}
+                                                    />
+                                                </Flex>
+                                            </FormControl>
+                                            <Box alignSelf="flex-end">
+                                                <Button
+                                                    onClick={() =>
+                                                        setExpenses(
+                                                            (prevExpenses) =>
+                                                                prevExpenses.filter(
+                                                                    (
+                                                                        prevExpenses,
+                                                                        prevExpenseIndex,
+                                                                    ) =>
+                                                                        prevExpenseIndex !==
+                                                                        index,
+                                                                ),
+                                                        )
+                                                    }
+                                                >
+                                                    Remove
+                                                </Button>
+                                            </Box>
+                                        </Flex>
+                                    ))}
+                                </Flex>
+                            </Flex>
+                        </Stack>
                     </DrawerBody>
 
                     <DrawerFooter>
