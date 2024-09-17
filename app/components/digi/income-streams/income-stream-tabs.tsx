@@ -14,6 +14,7 @@ import {
 import React, { useState } from 'react';
 import MainIncome from './main-income';
 import LaptopMobileIcon from '@/components/icons/laptop-mobile';
+import RefundAltIcon from '@/components/icons/refund-alt';
 
 const IncomeStreamTabs = () => {
     const [tab, setTab] = useState<string>('main-income');
@@ -48,6 +49,20 @@ const IncomeStreamTabs = () => {
                         <Text>Freelance / Part-Time</Text>
                     </Flex>
                 </Tab>
+                <Tab onClick={() => setTab('passive-incomes')}>
+                    <Flex alignItems="center" gap="4">
+                        <RefundAltIcon
+                            color={
+                                tab === 'passive-incomes'
+                                    ? theme.colors.blue[500]
+                                    : 'black'
+                            }
+                            width="20"
+                            height="20"
+                        />
+                        <Text>Passive Income</Text>
+                    </Flex>
+                </Tab>
             </TabList>
             <TabPanels>
                 <TabPanel px="0">
@@ -55,6 +70,9 @@ const IncomeStreamTabs = () => {
                 </TabPanel>
                 <TabPanel>
                     <Text>Freelance / Part-Time</Text>
+                </TabPanel>
+                <TabPanel>
+                    <Text>Passive Income</Text>
                 </TabPanel>
             </TabPanels>
         </Tabs>
