@@ -8,8 +8,14 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import NavLink from './nav-link';
+import { createSupabaseServerClient } from '@/lib/supabase/server-client';
 
-const Header = () => {
+const Header = async () => {
+    const supabase = createSupabaseServerClient();
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
     return (
         <Flex justifyContent="space-between" alignItems="center" zIndex="1">
             <Box width="7em">
@@ -52,8 +58,11 @@ const Header = () => {
                     </ListItem>
                     <ListItem>
                         <Button colorScheme="blue">
-                            <NavLink to="/login" color={'white'}>
-                                Login
+                            <NavLink
+                                to={!user ? '/login' : '/dashboard'}
+                                color={'white'}
+                            >
+                                {!user ? 'Login' : 'Dashboard'}
                             </NavLink>
                         </Button>
                     </ListItem>

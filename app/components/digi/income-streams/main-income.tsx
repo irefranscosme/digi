@@ -72,7 +72,6 @@ const incomeLists = [
 ];
 
 const MainIncome = () => {
-    console.log('main income');
     return (
         <Flex flexDirection="column" gap="4">
             <CreateIncomeDrawer />

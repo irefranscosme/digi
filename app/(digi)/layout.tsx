@@ -2,20 +2,10 @@ import ChartMixDollarIcon from '@/components/icons/chart-mix-dollar';
 import DashboardIcon from '@/components/icons/dashboard';
 import SideNavLink from '@/components/side-nav-link';
 import Footer from '@/components/sidebar/footer';
-import { Flex, Grid, GridItem, Image, Spinner, Stack } from '@chakra-ui/react';
-import { getServerSession } from 'next-auth';
+import { Flex, Grid, GridItem, Image } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
 const Layout = async ({ children }: { children: ReactNode }) => {
-    const session = await getServerSession();
-    if (!session) {
-        return (
-            <Stack direction="row" spacing={4}>
-                <Spinner size="xl" />
-            </Stack>
-        );
-    }
-
     return (
         <Grid
             templateAreas={`
@@ -97,7 +87,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                             </Flex>
                         </GridItem>
                         <GridItem py="8">
-                            <Footer session={session} />
+                            <Footer />
                         </GridItem>
                     </Grid>
                 </Flex>

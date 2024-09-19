@@ -1,20 +1,20 @@
-import GoogleButton from '@/components/auth/google-button';
-import LoginForm from '@/components/auth/login-form';
+import Google from '@/components/auth/google';
+import RegistrationForm from '@/components/auth/registration-form';
 import {
+    Button,
     Container,
     Divider,
     Flex,
     Grid,
     GridItem,
     Heading,
-    Image,
     Link,
     Text,
 } from '@chakra-ui/react';
 import React from 'react';
 
 export const metadata = {
-    title: 'Login to Digi - Diversify Your Income with Ease',
+    title: 'Register to Digi - Diversify Your Income with Ease',
     description:
         'Access your Digi account and start managing multiple income streams. Log in to discover personalized strategies, track your earnings, and take control of your financial future.',
 };
@@ -37,10 +37,10 @@ const Page = () => {
             <GridItem>
                 <Grid
                     templateAreas={`
-                            "brand brand"
-                            "main main"
-                            "footer footer"
-                        `}
+                    "brand brand"
+                    "main main"
+                    "footer footer"
+                `}
                     gridTemplateRows={'auto 1fr auto'}
                     gridTemplateColumns={'1fr'}
                     height="100%"
@@ -52,11 +52,9 @@ const Page = () => {
                             alignItems={'flex-end'}
                             padding="4"
                         >
-                            <Image
-                                src="assets/digi.png"
-                                alt="digi.png"
-                                width={'6em'}
-                            />
+                            <Link href="/login" color="brand.primary">
+                                <Button color="blue.500">Login</Button>
+                            </Link>
                         </Flex>
                     </GridItem>
                     <GridItem gridArea="main">
@@ -74,7 +72,7 @@ const Page = () => {
                                             fontSize="1.618em"
                                             fontWeight="bold"
                                         >
-                                            Log in
+                                            Register
                                         </Heading>
                                         <Text
                                             textAlign="center"
@@ -86,7 +84,7 @@ const Page = () => {
                                         </Text>
                                     </Flex>
                                     <Flex flexDirection="column">
-                                        <LoginForm />
+                                        <RegistrationForm />
                                         <Flex
                                             paddingBlock="4"
                                             alignItems="center"
@@ -101,18 +99,10 @@ const Page = () => {
                                             </Text>
                                             <Divider />
                                         </Flex>
-                                        <GoogleButton />
+                                        <Google label={'Sign up with Google'} />
                                     </Flex>
                                 </Flex>
                             </Container>
-                        </Flex>
-                    </GridItem>
-                    <GridItem gridArea="footer">
-                        <Flex gap="1" justifyContent={'center'} padding="4">
-                            <Text>New to Digi?</Text>
-                            <Link href="/register" color="brand.primary">
-                                Get started
-                            </Link>
                         </Flex>
                     </GridItem>
                 </Grid>
