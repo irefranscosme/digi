@@ -16,7 +16,7 @@ import {
 import { useRef } from 'react';
 import CreateIncomeForm from './create-income-form';
 import { FormikProps } from 'formik';
-import { CreateIncome } from '@/types/create-income-form-type';
+import { CreateIncome } from '@/types/create-income';
 
 const CreateIncomeDrawer = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();

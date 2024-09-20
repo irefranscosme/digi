@@ -1,0 +1,1 @@
+ALTER TABLE "income_streams" ALTER COLUMN "monthly_expenses" SET NOT NULL;
