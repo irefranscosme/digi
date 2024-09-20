@@ -1,35 +1,38 @@
 {
-  "name": "digi",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@auth/supabase-adapter": "^1.5.0",
-    "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@fontsource/be-vietnam-pro": "^5.0.22",
-    "@prisma/client": "^5.19.1",
-    "@supabase/ssr": "^0.5.1",
-    "@supabase/supabase-js": "^2.45.4",
-    "cookies-next": "^4.2.1",
-    "framer-motion": "^11.5.4",
-    "jsonwebtoken": "^9.0.2",
-    "next": "14.2.8",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.8",
-    "typescript": "^5"
-  }
+    "name": "digi",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "migrate": "dotenv -e .env.local -- npx prisma migrate dev"
+    },
+    "dependencies": {
+        "@auth/supabase-adapter": "^1.5.0",
+        "@chakra-ui/react": "^2.8.2",
+        "@emotion/react": "^11.13.3",
+        "@emotion/styled": "^11.13.0",
+        "@fontsource/be-vietnam-pro": "^5.0.22",
+        "@prisma/client": "^5.19.1",
+        "@supabase/ssr": "^0.5.1",
+        "@supabase/supabase-js": "^2.45.4",
+        "cookies-next": "^4.2.1",
+        "formik": "^2.4.6",
+        "framer-motion": "^11.5.4",
+        "jsonwebtoken": "^9.0.2",
+        "next": "14.2.8",
+        "react": "^18",
+        "react-dom": "^18",
+        "yup": "^1.4.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "eslint": "^8",
+        "eslint-config-next": "14.2.8",
+        "typescript": "^5"
+    }
 }
