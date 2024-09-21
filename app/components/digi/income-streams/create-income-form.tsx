@@ -1,13 +1,13 @@
 'use client';
 
-import { db } from '@/db';
+import { createIncomeStream } from '@/actions/create-income-action';
 import {
+    CreateIncome,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
-    incomeStreams,
-} from '@/db/schema';
-import { CreateIncome, IncomeType } from '@/types/create-income';
+    IncomeTypeEnum,
+} from '@/types/create-income';
 import {
     Box,
     Button,
@@ -22,34 +22,36 @@ import {
 import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
 import { RefObject } from 'react';
 
-type IncomeStream = typeof incomeStreams.$inferInsert;
+const isIncomeJob = (
+    income: IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance | '',
+): boolean | IncomeStreamJob => {
+    if (typeof income === 'string') return false;
+    if (income.type == IncomeTypeEnum.JOB) return income as IncomeStreamJob;
+    return false;
+};
 
 const CreateIncomeForm = ({
     formikRef,
 }: {
     formikRef: RefObject<FormikProps<CreateIncome>>;
 }) => {
-    const createIncomeStream = async (incomeStream: IncomeStream) => {
-        // return await db.insert(incomeStreams).values({
-        //     income: incomeStream.income,
-        //     monthly_expenses: incomeStream.monthly_expenses,
-        // });
-        console.log(incomeStream);
-    };
-
     return (
         <Stack gap="8">
             <Formik<CreateIncome>
                 initialValues={{
-                    income_type: '',
                     income: '',
                     monthly_expenses: [],
                 }}
                 onSubmit={(values) => {
-                    createIncomeStream({
-                        income: values.income as IncomeStreamBusiness,
-                        monthly_expenses: values.monthly_expenses,
-                    });
+                    console.log(values.income);
+                    if (isIncomeJob(values.income)) {
+                        createIncomeStream({
+                            income: values.income as IncomeStreamJob,
+                            monthly_expenses: values.monthly_expenses,
+                        });
+                    } else {
+                        console.log('income is undefined');
+                    }
                 }}
                 render={({ values: { monthly_expenses } }) => (
                     <Form>
@@ -59,15 +61,23 @@ const CreateIncomeForm = ({
                                 <Flex gap="2" flexDirection="column">
                                     <FormControl>
                                         <FormLabel>Income type</FormLabel>
-                                        <Field as={Select} name="income_type">
-                                            <option value="job">Job</option>
-                                            <option value="business">
+                                        <Field as={Select} name="income.type">
+                                            <option value={IncomeTypeEnum.JOB}>
+                                                Job
+                                            </option>
+                                            <option
+                                                value={IncomeTypeEnum.BUSINESS}
+                                            >
                                                 Business
                                             </option>
-                                            <option value="freelance">
+                                            <option
+                                                value={IncomeTypeEnum.FREELANCE}
+                                            >
                                                 Freelance
                                             </option>
-                                            <option value="part-time">
+                                            <option
+                                                value={IncomeTypeEnum.PART_TIME}
+                                            >
                                                 Part-Time
                                             </option>
                                         </Field>

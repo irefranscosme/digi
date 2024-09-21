@@ -1,30 +1,22 @@
-import { sql } from 'drizzle-orm';
-import { jsonb, pgEnum, pgTable, serial, text } from 'drizzle-orm/pg-core';
-
-export interface IncomeStreamJob {
-    type: string;
-    job_title: string;
-    job_location: string;
-    work_schedule: string;
-}
-
-export interface IncomeStreamBusiness {
-    type: string;
-    sector: string;
-    business_name: string;
-    service_offered: string;
-    target_audience: string;
-}
-
-export interface IncomeStreamFreelance {
-    type: string;
-    service_offered: string;
-    skills: string[];
-}
+import {
+    BillingEnum,
+    IncomeStreamBusiness,
+    IncomeStreamFreelance,
+    IncomeStreamJob,
+    IncomeTypeEnum,
+} from '@/types/create-income';
+import { jsonb, pgEnum, pgTable, serial } from 'drizzle-orm/pg-core';
 
 export const incomeStreamsBillingEnum = pgEnum('income_streams_billing_enum', [
-    'hourly',
-    'fixed-price',
+    BillingEnum.HOURLY,
+    BillingEnum.FIXED_PRICE,
+]);
+
+export const incomeTypeEnum = pgEnum('income_streams_income_type_enum', [
+    IncomeTypeEnum.JOB,
+    IncomeTypeEnum.BUSINESS,
+    IncomeTypeEnum.FREELANCE,
+    IncomeTypeEnum.PART_TIME,
 ]);
 
 type MonthlyExpenses = {
@@ -32,18 +24,12 @@ type MonthlyExpenses = {
     value: string;
 };
 
-type Income =
-    | IncomeStreamJob
-    | IncomeStreamBusiness
-    | IncomeStreamFreelance
-    | '';
+type Income = IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance;
 
 export const incomeStreams = pgTable('income_streams', {
     id: serial('id').primaryKey(),
     income: jsonb('income').$type<Income>().notNull(),
-    monthly_expenses: text('monthly_expenses')
-        .array()
-        .notNull()
+    monthly_expenses: jsonb('monthly_expenses')
         .$type<MonthlyExpenses[]>()
-        .default(sql`ARRAY[]::text[]`),
+        .notNull(),
 });

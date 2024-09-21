@@ -1,0 +1,63 @@
+{
+  "id": "516ddd49-e163-4f60-b665-581eb3fc119e",
+  "prevId": "4eda9ef1-ea64-4635-9de3-0ca85a34d958",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.income_streams": {
+      "name": "income_streams",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "income": {
+          "name": "income",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "monthly_expenses": {
+          "name": "monthly_expenses",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.income_streams_billing_enum": {
+      "name": "income_streams_billing_enum",
+      "schema": "public",
+      "values": [
+        "hourly",
+        "fixed-price"
+      ]
+    },
+    "public.income_streams_income_type_enum": {
+      "name": "income_streams_income_type_enum",
+      "schema": "public",
+      "values": [
+        "job",
+        "business",
+        "freelance",
+        "part-time"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
