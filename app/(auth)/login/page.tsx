@@ -22,11 +22,16 @@ export const metadata = {
 const Page = () => {
     return (
         <Grid
-            templateColumns="repeat(2, 1fr)"
+            templateColumns={[
+                'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
+                'repeat(2, 1fr)',
+            ]}
             templateRows="repeat(1, 1fr)"
             height="100%"
         >
-            <GridItem>
+            <GridItem display={['none', 'none', 'none', 'block']}>
                 <Flex
                     alignItems="center"
                     justifyContent="center"
