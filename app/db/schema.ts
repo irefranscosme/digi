@@ -1,9 +1,8 @@
 import {
     BillingEnum,
-    IncomeStreamBusiness,
-    IncomeStreamFreelance,
-    IncomeStreamJob,
+    Income,
     IncomeTypeEnum,
+    MonthlyExpenses,
 } from '@/types/create-income';
 import { jsonb, pgEnum, pgTable, serial } from 'drizzle-orm/pg-core';
 
@@ -18,13 +17,6 @@ export const incomeTypeEnum = pgEnum('income_streams_income_type_enum', [
     IncomeTypeEnum.FREELANCE,
     IncomeTypeEnum.PART_TIME,
 ]);
-
-type MonthlyExpenses = {
-    label: string;
-    value: string;
-};
-
-type Income = IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance;
 
 export const incomeStreams = pgTable('income_streams', {
     id: serial('id').primaryKey(),

@@ -1,3 +1,5 @@
+import { incomeStreams } from '@/db/schema';
+
 export type IncomeMonthlyExpense = {
     label: string;
     value: string;
@@ -46,3 +48,15 @@ export type CreateIncome = {
     income: IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance | '';
     monthly_expenses: IncomeMonthlyExpense[];
 };
+
+export type IncomeStream = typeof incomeStreams.$inferInsert;
+
+export type MonthlyExpenses = {
+    label: string;
+    value: string;
+};
+
+export type Income =
+    | IncomeStreamJob
+    | IncomeStreamBusiness
+    | IncomeStreamFreelance;

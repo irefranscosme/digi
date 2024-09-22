@@ -16,9 +16,17 @@ import {
 import { useRef } from 'react';
 import CreateIncomeForm from './create-income-form';
 import { FormikProps } from 'formik';
-import { CreateIncome } from '@/types/create-income';
+import { CreateIncome, IncomeStream } from '@/types/create-income';
 
-const CreateIncomeDrawer = () => {
+interface CreateIncomeDrawerProps {
+    setOptimisticIncomeStreams: (value: IncomeStream) => void;
+    insertIncomeStream: (incomeStream: IncomeStream) => void;
+}
+
+const CreateIncomeDrawer = ({
+    setOptimisticIncomeStreams,
+    insertIncomeStream,
+}: CreateIncomeDrawerProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const btnRef = useRef<HTMLButtonElement>(null);
@@ -64,7 +72,13 @@ const CreateIncomeDrawer = () => {
                     </DrawerHeader>
 
                     <DrawerBody>
-                        <CreateIncomeForm formikRef={formikRef} />
+                        <CreateIncomeForm
+                            formikRef={formikRef}
+                            setOptimisticIncomeStreams={
+                                setOptimisticIncomeStreams
+                            }
+                            insertIncomeStream={insertIncomeStream}
+                        />
                     </DrawerBody>
 
                     <DrawerFooter>

@@ -1,8 +1,8 @@
 'use client';
 
-import { createIncomeStream } from '@/actions/create-income-action';
 import {
     CreateIncome,
+    IncomeStream,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
@@ -32,8 +32,12 @@ const isIncomeJob = (
 
 const CreateIncomeForm = ({
     formikRef,
+    setOptimisticIncomeStreams,
+    insertIncomeStream,
 }: {
     formikRef: RefObject<FormikProps<CreateIncome>>;
+    setOptimisticIncomeStreams: (value: IncomeStream) => void;
+    insertIncomeStream: (incomeStream: IncomeStream) => void;
 }) => {
     return (
         <Stack gap="8">
@@ -42,13 +46,18 @@ const CreateIncomeForm = ({
                     income: '',
                     monthly_expenses: [],
                 }}
-                onSubmit={(values) => {
+                onSubmit={async (values) => {
                     console.log(values.income);
                     if (isIncomeJob(values.income)) {
-                        createIncomeStream({
+                        setOptimisticIncomeStreams({
                             income: values.income as IncomeStreamJob,
                             monthly_expenses: values.monthly_expenses,
                         });
+                        insertIncomeStream({
+                            income: values.income as IncomeStreamJob,
+                            monthly_expenses: values.monthly_expenses,
+                        });
+                        console.log('Successfully created income stream');
                     } else {
                         console.log('income is undefined');
                     }
