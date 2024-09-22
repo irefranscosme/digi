@@ -1,44 +1,32 @@
-import { NextRequest, NextResponse } from 'next/server';
-
-import {
-    API_AUTH_PREFIX,
-    AUTH_ROUTES,
-    PROTECTED_ROUTES,
-} from '@/protected-routes';
+import { NextResponse, type NextRequest } from 'next/server';
+import { createSupabaseReqResClient } from './app/lib/supabase/server-client';
 
 export async function middleware(request: NextRequest) {
-    const sessionToken =
-        request.cookies.get('next-auth.session-token') ||
-        request.cookies.get('__Secure-next-auth.session-token');
+    const response = NextResponse.next({
+        request: {
+            headers: request.headers,
+        },
+    });
 
-    // manage route protection
-    const isAuth = sessionToken;
-    const pathname = request.nextUrl.pathname;
+    const supabase = createSupabaseReqResClient(request, response);
 
-    const isAccessingApiAuthRoute = pathname.startsWith(API_AUTH_PREFIX);
-    const isAccessingAuthRoute = AUTH_ROUTES.some((route) =>
-        pathname.startsWith(route),
-    );
-    const isAccessingProtectedRoute = PROTECTED_ROUTES.some((route) =>
-        pathname.startsWith(route),
-    );
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
 
-    if (isAccessingApiAuthRoute) {
-        console.log('give access');
-        return NextResponse.next();
+    if (user && request.nextUrl.pathname === '/login') {
+        return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
-    if (isAccessingAuthRoute) {
-        if (isAuth) {
-            console.log('redirct to dashboard');
-            return NextResponse.redirect(new URL('/dashboard', request.url));
-        }
-        console.log('do not redirect to dashboard');
-        return NextResponse.next();
-    }
-
-    if (!isAuth && isAccessingProtectedRoute) {
-        console.log('redirect to login');
+    if (!user && request.nextUrl.pathname === '/dashboard') {
         return NextResponse.redirect(new URL('/login', request.url));
     }
+
+    return response;
 }
+
+export const config = {
+    matcher: [
+        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    ],
+};

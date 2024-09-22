@@ -56,6 +56,7 @@ function SideNavLink({
                     }}
                     paddingBlock="2"
                     px="4"
+                    justifyContent={['center', 'center', 'center', 'start']}
                 >
                     {isActive ? hoverIcon : defaultIcon}
                     {children}
@@ -75,7 +76,13 @@ function SideNavLink({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Flex flexDirection="row" gap="4" alignItems="center" px="4">
+            <Flex
+                flexDirection="row"
+                gap="4"
+                alignItems="center"
+                px="4"
+                justifyContent={['center', 'center', 'center', 'start']}
+            >
                 {isHovered ? hoverIcon : defaultIcon}
                 {children}
             </Flex>
