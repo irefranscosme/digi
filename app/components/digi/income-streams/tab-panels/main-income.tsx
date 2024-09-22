@@ -36,14 +36,12 @@ const MainIncome = () => {
 
     const fetchIncomeStreams = async () => {
         try {
-            console.log('fetching income streams');
             const result = await getIncomeStreams();
-            console.log(result);
             if (result) {
                 setIncomeStreams(result as IncomeStream[]);
             }
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     };
 
@@ -60,7 +58,7 @@ const MainIncome = () => {
                 setIncomeStreamLoading(false);
             }
         } catch (e) {
-            console.log(e);
+            console.error(e);
             setIncomeStreamLoading(false);
         }
     };
@@ -74,7 +72,6 @@ const MainIncome = () => {
             <CreateIncomeDrawer
                 setOptimisticIncomeStreams={setOptimisticIncomeStreams}
                 insertIncomeStream={(incomeStream) => {
-                    console.log('inserting income stream');
                     insertIncomeStream(incomeStream);
                 }}
                 isLoading={incomeStreamLoading}

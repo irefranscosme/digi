@@ -47,7 +47,6 @@ const CreateIncomeForm = ({
                     monthly_expenses: [],
                 }}
                 onSubmit={async (values) => {
-                    console.log(values.income);
                     if (isIncomeJob(values.income)) {
                         setOptimisticIncomeStreams({
                             income: values.income as IncomeStreamJob,
@@ -57,9 +56,7 @@ const CreateIncomeForm = ({
                             income: values.income as IncomeStreamJob,
                             monthly_expenses: values.monthly_expenses,
                         });
-                        console.log('Successfully created income stream');
                     } else {
-                        console.log('income is undefined');
                     }
                 }}
                 render={({ values: { monthly_expenses } }) => (

@@ -21,8 +21,6 @@ const Footer = async () => {
         data: { user },
     } = await supabase.auth.getUser();
 
-    console.log(user?.user_metadata?.picture);
-
     return (
         <Flex
             direction={['column', 'column', 'column', 'row']}
