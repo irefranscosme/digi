@@ -79,7 +79,15 @@ const MainIncome = () => {
                 }}
                 isLoading={incomeStreamLoading}
             />
-            <Grid gap="2" templateColumns="repeat(2, 1fr)">
+            <Grid
+                gap="2"
+                templateColumns={[
+                    'repeat(1, 1fr)',
+                    'repeat(1, 1fr)',
+                    'repeat(1, 1fr)',
+                    'repeat(2, 1fr)',
+                ]}
+            >
                 {optimisticIncomeStreams?.map((income) => (
                     <GridItem key={income.id}>
                         <Income income={income.income} />
