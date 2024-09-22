@@ -15,7 +15,7 @@ import React from 'react';
 
 const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
     return (
-        <Card overflow="clip">
+        <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
                     {income.job_title} - {income.type}
@@ -26,9 +26,13 @@ const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
                 <Flex justifyContent="space-between">
                     <Grid
                         gap="2"
-                        templateColumns="repeat(2, 1fr)"
+                        templateColumns={[
+                            'repeat(1, 1fr)',
+                            'repeat(1, 1fr)',
+                            'repeat(1, 1fr)',
+                            'repeat(2, 1fr)',
+                        ]}
                         maxWidth="sm"
-                        flexGrow={1}
                     >
                         <GridItem>
                             <Heading
@@ -67,18 +71,12 @@ const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
                             </Text>
                         </GridItem>
                     </Grid>
-                    <Box
-                        position="absolute"
-                        top="4em"
-                        right="-7.6em"
-                        overflow="hidden"
-                        borderRadius="0.4em"
-                        height="100%"
-                    >
+                    <Box borderRadius="0.4em" position="relative" width="15em">
                         <Image
                             src="assets/backgrounds/suitcase.png"
                             alt="suitcase.png"
                             width="15em"
+                            sx={{ position: 'absolute', right: 0, top: '2em' }}
                         />
                     </Box>
                 </Flex>

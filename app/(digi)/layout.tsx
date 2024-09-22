@@ -23,7 +23,12 @@ const Layout = async ({ children }: { children: ReactNode }) => {
                 <SideNavWithLabel />
                 <SideNavWithoutLabel />
             </GridItem>
-            <GridItem gridArea="main" py="8" px="10" overflowY="scroll">
+            <GridItem
+                gridArea="main"
+                py="8"
+                px={['4', '4', '4', '10']}
+                overflowY="scroll"
+            >
                 {children}
             </GridItem>
         </Grid>

@@ -1,14 +1,14 @@
 'use client';
 
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
-import CreateIncomeDrawer from './create-income-drawer';
+import CreateIncomeDrawer from '../create-income-drawer';
 import {
     type Income,
     IncomeStream,
     IncomeStreamJob as IncomeStreamJobType,
     IncomeTypeEnum,
 } from '@/types/create-income';
-import IncomeStreamJob from './income-stream-job';
+import IncomeStreamJob from '../income-stream-job';
 import { useEffect, useOptimistic, useState } from 'react';
 import {
     createIncomeStream,
@@ -36,14 +36,12 @@ const MainIncome = () => {
 
     const fetchIncomeStreams = async () => {
         try {
-            console.log('fetching income streams');
             const result = await getIncomeStreams();
-            console.log(result);
             if (result) {
                 setIncomeStreams(result as IncomeStream[]);
             }
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     };
 
@@ -60,7 +58,7 @@ const MainIncome = () => {
                 setIncomeStreamLoading(false);
             }
         } catch (e) {
-            console.log(e);
+            console.error(e);
             setIncomeStreamLoading(false);
         }
     };
@@ -74,12 +72,19 @@ const MainIncome = () => {
             <CreateIncomeDrawer
                 setOptimisticIncomeStreams={setOptimisticIncomeStreams}
                 insertIncomeStream={(incomeStream) => {
-                    console.log('inserting income stream');
                     insertIncomeStream(incomeStream);
                 }}
                 isLoading={incomeStreamLoading}
             />
-            <Grid gap="2" templateColumns="repeat(2, 1fr)">
+            <Grid
+                gap="2"
+                templateColumns={[
+                    'repeat(1, 1fr)',
+                    'repeat(1, 1fr)',
+                    'repeat(1, 1fr)',
+                    'repeat(2, 1fr)',
+                ]}
+            >
                 {optimisticIncomeStreams?.map((income) => (
                     <GridItem key={income.id}>
                         <Income income={income.income} />
