@@ -14,7 +14,7 @@ import {
     theme,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import MainIncome from './main-income';
+import MainIncome from './tab-panels/main-income';
 import LaptopMobileIcon from '@/components/icons/laptop-mobile';
 import RefundAltIcon from '@/components/icons/refund-alt';
 
@@ -71,12 +71,7 @@ const IncomeStreamTabs = () => {
                 </GridItem>
                 <GridItem>
                     <TabPanels>
-                        <TabPanel
-                            px="0"
-                            overflowY="auto"
-                            // maxHeight={'85vh'}
-                            height={'100%'}
-                        >
+                        <TabPanel px="0" overflowY="auto" height={'100%'}>
                             <MainIncome />
                         </TabPanel>
                         <TabPanel>

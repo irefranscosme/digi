@@ -1,14 +1,14 @@
 'use client';
 
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
-import CreateIncomeDrawer from './create-income-drawer';
+import CreateIncomeDrawer from '../create-income-drawer';
 import {
     type Income,
     IncomeStream,
     IncomeStreamJob as IncomeStreamJobType,
     IncomeTypeEnum,
 } from '@/types/create-income';
-import IncomeStreamJob from './income-stream-job';
+import IncomeStreamJob from '../income-stream-job';
 import { useEffect, useOptimistic, useState } from 'react';
 import {
     createIncomeStream,
