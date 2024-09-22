@@ -31,6 +31,8 @@ const MainIncome = () => {
             newIncomeStream,
         ],
     );
+    const [incomeStreamLoading, setIncomeStreamLoading] =
+        useState<boolean>(false);
 
     const fetchIncomeStreams = async () => {
         try {
@@ -46,13 +48,20 @@ const MainIncome = () => {
     };
 
     const insertIncomeStream = async (IncomeStream: IncomeStream) => {
-        const data = await createIncomeStream(IncomeStream);
+        setIncomeStreamLoading(true);
+        try {
+            const data = await createIncomeStream(IncomeStream);
 
-        if (data) {
-            setIncomeStreams((incomeStreams) => [
-                ...(incomeStreams || []),
-                ...data,
-            ]);
+            if (data) {
+                setIncomeStreams((incomeStreams) => [
+                    ...(incomeStreams || []),
+                    ...data,
+                ]);
+                setIncomeStreamLoading(false);
+            }
+        } catch (e) {
+            console.log(e);
+            setIncomeStreamLoading(false);
         }
     };
 
@@ -68,6 +77,7 @@ const MainIncome = () => {
                     console.log('inserting income stream');
                     insertIncomeStream(incomeStream);
                 }}
+                isLoading={incomeStreamLoading}
             />
             <Grid gap="2" templateColumns="repeat(2, 1fr)">
                 {optimisticIncomeStreams?.map((income) => (

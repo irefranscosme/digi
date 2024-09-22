@@ -21,11 +21,13 @@ import { CreateIncome, IncomeStream } from '@/types/create-income';
 interface CreateIncomeDrawerProps {
     setOptimisticIncomeStreams: (value: IncomeStream) => void;
     insertIncomeStream: (incomeStream: IncomeStream) => void;
+    isLoading: boolean;
 }
 
 const CreateIncomeDrawer = ({
     setOptimisticIncomeStreams,
     insertIncomeStream,
+    isLoading,
 }: CreateIncomeDrawerProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -89,6 +91,7 @@ const CreateIncomeDrawer = ({
                             colorScheme="blue"
                             onClick={handleSubmit}
                             type="submit"
+                            isLoading={isLoading}
                         >
                             Save
                         </Button>
