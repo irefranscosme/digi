@@ -10,6 +10,7 @@ const SideNavWithLabel = () => {
         <Flex
             justifyContent="space-between"
             height="inherit"
+            width="100%"
             display={['none', 'none', 'none', 'block']}
         >
             <Grid
@@ -39,7 +40,7 @@ const SideNavWithLabel = () => {
                             width="100%"
                             hoverIcon={
                                 <DashboardIcon
-                                    color="white"
+                                    color="gray"
                                     width="20"
                                     height="20"
                                 />
@@ -59,7 +60,7 @@ const SideNavWithLabel = () => {
                             width="100%"
                             hoverIcon={
                                 <ChartMixDollarIcon
-                                    color="white"
+                                    color="gray"
                                     width="20"
                                     height="20"
                                 />

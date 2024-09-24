@@ -18,7 +18,6 @@ function SideNavLink({
     to,
     activeProps,
     children,
-    color = 'black',
     hoverIcon,
     defaultIcon,
     ...props
@@ -35,7 +34,7 @@ function SideNavLink({
                 {...props}
                 {...activeProps}
                 _hover={{ fill: 'white' }}
-                color="white"
+                color="black"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
@@ -44,21 +43,21 @@ function SideNavLink({
                     gap="4"
                     alignItems="center"
                     position="relative"
-                    bg={'blue.500'}
+                    bg={'gray.200'}
                     _before={{
                         content: '""',
                         position: 'absolute',
-                        left: '0',
+                        right: '0',
                         color: 'blue',
                         width: '0.2em',
                         height: '50%',
-                        backgroundColor: 'white',
+                        backgroundColor: 'blue.500',
                     }}
                     paddingBlock="2"
                     px="4"
                     justifyContent={['center', 'center', 'center', 'start']}
                 >
-                    {isActive ? hoverIcon : defaultIcon}
+                    {isActive ? defaultIcon : hoverIcon}
                     {children}
                 </Flex>
             </ChakraLink>
@@ -70,8 +69,8 @@ function SideNavLink({
             href={to}
             as={Link}
             {...props}
-            _hover={{ color: 'white', backgroundColor: 'blue.500' }}
-            color={color}
+            _hover={{ color: 'black', backgroundColor: 'gray.200' }}
+            color={'gray.400'}
             paddingBlock="2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -83,7 +82,7 @@ function SideNavLink({
                 px="4"
                 justifyContent={['center', 'center', 'center', 'start']}
             >
-                {isHovered ? hoverIcon : defaultIcon}
+                {isHovered ? defaultIcon : hoverIcon}
                 {children}
             </Flex>
         </ChakraLink>

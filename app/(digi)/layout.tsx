@@ -1,6 +1,6 @@
 import SideNavWithLabel from '@/components/digi/sidenav-with-label';
 import SideNavWithoutLabel from '@/components/digi/sidenav-without-label';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Divider, Flex, Grid, GridItem } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
 const Layout = async ({ children }: { children: ReactNode }) => {
@@ -18,10 +18,18 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             <GridItem
                 gridArea="sidebar"
                 height="100%"
-                backgroundColor="gray.200"
+                backgroundColor="gray.50"
+                width={'100%'}
             >
-                <SideNavWithLabel />
-                <SideNavWithoutLabel />
+                <Flex
+                    height={'inherit'}
+                    width={'inherit'}
+                    justifyContent="space-between"
+                >
+                    <SideNavWithLabel />
+                    <SideNavWithoutLabel />
+                    <Divider height="100%" orientation="vertical" />
+                </Flex>
             </GridItem>
             <GridItem
                 gridArea="main"
