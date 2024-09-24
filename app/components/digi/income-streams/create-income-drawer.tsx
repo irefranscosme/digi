@@ -32,7 +32,6 @@ const CreateIncomeDrawer = ({
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const btnRef = useRef<HTMLButtonElement>(null);
-
     const formikRef = useRef<FormikProps<CreateIncome>>(null);
 
     const handleSubmit = async () => {
@@ -43,9 +42,9 @@ const CreateIncomeDrawer = ({
 
     return (
         <>
-            <Box>
-                <Button ref={btnRef} onClick={onOpen}>
-                    Create
+            <Box mt="2">
+                <Button ref={btnRef} onClick={onOpen} colorScheme="blue">
+                    Create Main Income
                 </Button>
             </Box>
             <Drawer
