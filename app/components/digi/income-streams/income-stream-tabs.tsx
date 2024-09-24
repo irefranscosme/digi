@@ -18,6 +18,11 @@ import MainIncome from './tab-panels/main-income';
 import LaptopMobileIcon from '@/components/icons/laptop-mobile';
 import RefundAltIcon from '@/components/icons/refund-alt';
 
+const isActive: Record<string, string> = {
+    active: theme.colors.black[500],
+    'in-active': theme.colors.gray[200],
+};
+
 const IncomeStreamTabs = () => {
     const [tab, setTab] = useState<string>('main-income');
     return (
@@ -29,42 +34,72 @@ const IncomeStreamTabs = () => {
                             <Flex alignItems="center" gap="4">
                                 <MoneySackIcon
                                     color={
-                                        tab === 'main-income'
-                                            ? theme.colors.blue[500]
-                                            : 'black'
+                                        isActive[
+                                            tab === 'main-income'
+                                                ? 'active'
+                                                : 'in-active'
+                                        ]
                                     }
                                     width="20"
                                     height="20"
                                 />
-                                <Text>Main Income</Text>
+                                <Text
+                                    color={
+                                        tab === 'main-income'
+                                            ? 'black'
+                                            : 'gray.500'
+                                    }
+                                >
+                                    Main Income
+                                </Text>
                             </Flex>
                         </Tab>
                         <Tab onClick={() => setTab('freelance-part-time')}>
                             <Flex alignItems="center" gap="4">
                                 <LaptopMobileIcon
                                     color={
-                                        tab === 'freelance-part-time'
-                                            ? theme.colors.blue[500]
-                                            : 'black'
+                                        isActive[
+                                            tab === 'freelance-part-time'
+                                                ? 'active'
+                                                : 'in-active'
+                                        ]
                                     }
                                     width="20"
                                     height="20"
                                 />
-                                <Text>Freelance / Part-Time</Text>
+                                <Text
+                                    color={
+                                        tab === 'freelance-part-time'
+                                            ? 'black'
+                                            : 'gray.500'
+                                    }
+                                >
+                                    Freelance / Part-Time
+                                </Text>
                             </Flex>
                         </Tab>
                         <Tab onClick={() => setTab('passive-incomes')}>
                             <Flex alignItems="center" gap="4">
                                 <RefundAltIcon
                                     color={
-                                        tab === 'passive-incomes'
-                                            ? theme.colors.blue[500]
-                                            : 'black'
+                                        isActive[
+                                            tab === 'passive-incomes'
+                                                ? 'active'
+                                                : 'in-active'
+                                        ]
                                     }
                                     width="20"
                                     height="20"
                                 />
-                                <Text>Passive Income</Text>
+                                <Text
+                                    color={
+                                        tab === 'passive-incomes'
+                                            ? 'black'
+                                            : 'gray.500'
+                                    }
+                                >
+                                    Passive Income
+                                </Text>
                             </Flex>
                         </Tab>
                     </TabList>
