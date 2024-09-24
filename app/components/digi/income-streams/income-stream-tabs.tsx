@@ -17,13 +17,18 @@ import React, { useState } from 'react';
 import MainIncome from './tab-panels/main-income';
 import LaptopMobileIcon from '@/components/icons/laptop-mobile';
 import RefundAltIcon from '@/components/icons/refund-alt';
+import { IncomeStream } from '@/types/create-income';
 
 const isActive: Record<string, string> = {
     active: theme.colors.black[500],
     'in-active': theme.colors.gray[200],
 };
 
-const IncomeStreamTabs = () => {
+const IncomeStreamTabs = ({
+    incomeStreams,
+}: {
+    incomeStreams: IncomeStream[];
+}) => {
     const [tab, setTab] = useState<string>('main-income');
     return (
         <Tabs>
@@ -107,7 +112,7 @@ const IncomeStreamTabs = () => {
                 <GridItem>
                     <TabPanels>
                         <TabPanel px="0" overflowY="auto" height={'100%'}>
-                            <MainIncome />
+                            <MainIncome initialIncomeStreams={incomeStreams} />
                         </TabPanel>
                         <TabPanel>
                             <Text>Freelance / Part-Time</Text>

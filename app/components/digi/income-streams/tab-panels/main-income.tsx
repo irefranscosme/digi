@@ -22,8 +22,13 @@ const Income = ({ income }: { income: Income }) => {
     }
 };
 
-const MainIncome = () => {
-    const [incomeStreams, setIncomeStreams] = useState<IncomeStream[]>();
+const MainIncome = ({
+    initialIncomeStreams,
+}: {
+    initialIncomeStreams: IncomeStream[];
+}) => {
+    const [incomeStreams, setIncomeStreams] =
+        useState<IncomeStream[]>(initialIncomeStreams);
     const [optimisticIncomeStreams, setOptimisticIncomeStreams] = useOptimistic(
         incomeStreams || [],
         (state: IncomeStream[], newIncomeStream: IncomeStream) => [
