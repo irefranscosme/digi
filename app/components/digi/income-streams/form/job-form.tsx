@@ -211,7 +211,9 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                                 )}
                                             </>
                                         ) : (
-                                            <Text>Add your expenses here</Text>
+                                            <Text color={'gray.400'}>
+                                                List your monthly expenses here.
+                                            </Text>
                                         )}
                                     </Flex>
                                 </Flex>

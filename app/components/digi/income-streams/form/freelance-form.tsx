@@ -1,6 +1,5 @@
 import {
     CreateIncome,
-    CreateIncomeBusiness,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
@@ -19,8 +18,8 @@ import {
 import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
 import React, { ChangeEvent, RefObject } from 'react';
 
-interface BusinessFormProps {
-    handleSubmit: (incomeStream: CreateIncomeBusiness) => void;
+interface FreelanceFormProps {
+    handleSubmit: (incomeStream: CreateIncome<IncomeStreamFreelance>) => void;
     setIncomeType: (incomeType: IncomeTypeEnum) => void;
     formikRef: RefObject<
         FormikProps<
@@ -31,33 +30,31 @@ interface BusinessFormProps {
     >;
 }
 
-const BusinessForm = ({
+const FreelanceForm = ({
     handleSubmit,
     setIncomeType,
     formikRef,
-}: BusinessFormProps) => {
+}: FreelanceFormProps) => {
     return (
         <>
-            <Formik<CreateIncomeBusiness>
+            <Formik<CreateIncome<IncomeStreamFreelance>>
                 initialValues={{
                     income: {
-                        business_name: '',
-                        sector: '',
+                        type: IncomeTypeEnum.FREELANCE,
                         service_offered: '',
-                        target_audience: '',
-                        type: IncomeTypeEnum.BUSINESS,
+                        skills: [],
                     },
                     monthly_expenses: [],
                 }}
                 onSubmit={handleSubmit}
                 innerRef={
                     formikRef as RefObject<
-                        FormikProps<CreateIncome<IncomeStreamBusiness>>
+                        FormikProps<CreateIncome<IncomeStreamFreelance>>
                     >
                 }
                 enableReinitialize={true}
             >
-                {({ values: { monthly_expenses } }) => (
+                {({ values: { monthly_expenses, income } }) => (
                     <Form>
                         <FormControl mb="4">
                             <FormLabel>Income type</FormLabel>
@@ -89,30 +86,6 @@ const BusinessForm = ({
                             <Flex gap="4" flexDirection="column">
                                 <Flex gap="2" flexDirection="column">
                                     <FormControl>
-                                        <FormLabel>Sector</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter your business sector."
-                                            name="income.sector"
-                                        />
-                                    </FormControl>
-                                </Flex>
-                                <Flex gap="2" flexDirection="column">
-                                    <FormControl>
-                                        <FormLabel>Business Name</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter your business name."
-                                            name="income.business_name"
-                                        />
-                                    </FormControl>
-                                </Flex>
-                            </Flex>
-                            <Flex gap="4" flexDirection="column">
-                                <Flex gap="2" flexDirection="column">
-                                    <FormControl>
                                         <FormLabel>Service Offered</FormLabel>
                                         <Field
                                             as={Input}
@@ -123,15 +96,96 @@ const BusinessForm = ({
                                     </FormControl>
                                 </Flex>
                                 <Flex gap="2" flexDirection="column">
-                                    <FormControl>
-                                        <FormLabel>Target Audience</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter your business target audience."
-                                            name="income.target_audience"
-                                        />
-                                    </FormControl>
+                                    <FieldArray
+                                        name="income.skills"
+                                        render={(arrayHelpers) => (
+                                            <Flex
+                                                flexDirection="column"
+                                                gap="4"
+                                            >
+                                                <Flex
+                                                    alignItems="center"
+                                                    justifyContent="space-between"
+                                                >
+                                                    <FormLabel margin="0">
+                                                        Skills and Experties
+                                                    </FormLabel>
+                                                    <Button
+                                                        onClick={() => {
+                                                            arrayHelpers.push(
+                                                                '',
+                                                            );
+                                                        }}
+                                                    >
+                                                        Add Skill
+                                                    </Button>
+                                                </Flex>
+                                                <Flex
+                                                    flexDirection="column"
+                                                    gap="2"
+                                                >
+                                                    {income.skills &&
+                                                    income.skills.length > 0 ? (
+                                                        <>
+                                                            {income.skills.map(
+                                                                (
+                                                                    skill,
+                                                                    index,
+                                                                ) => (
+                                                                    <Flex
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        flexDirection={
+                                                                            'column'
+                                                                        }
+                                                                        gap="2"
+                                                                    >
+                                                                        <FormControl>
+                                                                            <Flex
+                                                                                gap="2"
+                                                                                flexDirection="column"
+                                                                            >
+                                                                                <Field
+                                                                                    as={
+                                                                                        Input
+                                                                                    }
+                                                                                    type="text"
+                                                                                    placeholder={`Enter your skill ${
+                                                                                        index +
+                                                                                        1
+                                                                                    }.`}
+                                                                                    name={`income.skills.${index}`}
+                                                                                />
+                                                                            </Flex>
+                                                                        </FormControl>
+                                                                        <Box alignSelf="flex-end">
+                                                                            <Button
+                                                                                onClick={() => {
+                                                                                    arrayHelpers.remove(
+                                                                                        index,
+                                                                                    );
+                                                                                }}
+                                                                            >
+                                                                                Remove
+                                                                            </Button>
+                                                                        </Box>
+                                                                    </Flex>
+                                                                ),
+                                                            )}
+                                                        </>
+                                                    ) : (
+                                                        <Text
+                                                            color={'gray.400'}
+                                                        >
+                                                            List your skills and
+                                                            experties here.
+                                                        </Text>
+                                                    )}
+                                                </Flex>
+                                            </Flex>
+                                        )}
+                                    />
                                 </Flex>
                             </Flex>
 
@@ -184,7 +238,7 @@ const BusinessForm = ({
                                                                                 Input
                                                                             }
                                                                             type="text"
-                                                                            placeholder="Enter your expense label."
+                                                                            placeholder="Type of expense"
                                                                             name={`monthly_expenses.${index}.label`}
                                                                         />
                                                                         <Field
@@ -192,7 +246,7 @@ const BusinessForm = ({
                                                                                 Input
                                                                             }
                                                                             type="text"
-                                                                            placeholder="Enter your expense value."
+                                                                            placeholder="Expense amount"
                                                                             name={`monthly_expenses.${index}.value`}
                                                                         />
                                                                     </Flex>
@@ -230,4 +284,4 @@ const BusinessForm = ({
     );
 };
 
-export default BusinessForm;
+export default FreelanceForm;

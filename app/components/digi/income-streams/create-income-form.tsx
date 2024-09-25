@@ -14,6 +14,7 @@ import { FormikProps } from 'formik';
 import { ReactNode, RefObject, useState } from 'react';
 import JobForm from './form/job-form';
 import BusinessForm from './form/business-form';
+import FreelanceForm from './form/freelance-form';
 
 const CreateIncomeForm = ({
     formikRef,
@@ -69,6 +70,13 @@ const CreateIncomeForm = ({
         ),
         [IncomeTypeEnum.BUSINESS]: (
             <BusinessForm
+                formikRef={formikRef}
+                handleSubmit={handleSubmit}
+                setIncomeType={setIncomeType}
+            />
+        ),
+        [IncomeTypeEnum.FREELANCE]: (
+            <FreelanceForm
                 formikRef={formikRef}
                 handleSubmit={handleSubmit}
                 setIncomeType={setIncomeType}
