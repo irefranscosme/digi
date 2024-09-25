@@ -33,7 +33,7 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
-                            'repeat(2, 1fr)',
+                            'repeat(1, 1fr)',
                         ]}
                         maxWidth="sm"
                     >
@@ -71,6 +71,24 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 letterSpacing="-0.011em"
                             >
                                 {income.work_schedule}
+                            </Text>
+                        </GridItem>
+                        <GridItem>
+                            <Heading
+                                fontSize="1em"
+                                lineHeight="1.272"
+                                letterSpacing="-0.014em"
+                                color="gray.400"
+                                fontWeight="medium"
+                            >
+                                Employment Type
+                            </Heading>
+                            <Text
+                                fontSize="1em"
+                                lineHeight="1.618"
+                                letterSpacing="-0.011em"
+                            >
+                                {income.employment_type || 'N/A'}
                             </Text>
                         </GridItem>
                     </Grid>
