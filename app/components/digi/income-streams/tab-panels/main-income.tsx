@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import CreateIncomeDrawer from '../create-income-drawer';
 import {
     type Income,
