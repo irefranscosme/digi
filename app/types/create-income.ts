@@ -28,6 +28,7 @@ export type IncomeStreamJob = {
     job_title: string;
     job_location: string;
     work_schedule: string;
+    // TODO: employment
 };
 
 export type IncomeStreamBusiness = {
@@ -44,8 +45,21 @@ export type IncomeStreamFreelance = {
     skills: string[];
 };
 
-export type CreateIncome = {
-    income: IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance | '';
+export type CreateIncome<T = void> = {
+    income: T;
+    monthly_expenses: IncomeMonthlyExpense[];
+};
+
+export type CreateIncomeJob = {
+    income: IncomeStreamJob;
+    monthly_expenses: IncomeMonthlyExpense[];
+};
+export type CreateIncomeBusiness = {
+    income: IncomeStreamBusiness;
+    monthly_expenses: IncomeMonthlyExpense[];
+};
+export type CreateIncomeFreelance = {
+    income: IncomeStreamFreelance;
     monthly_expenses: IncomeMonthlyExpense[];
 };
 

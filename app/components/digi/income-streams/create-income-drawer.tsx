@@ -16,7 +16,13 @@ import {
 import { useRef } from 'react';
 import CreateIncomeForm from './create-income-form';
 import { FormikProps } from 'formik';
-import { CreateIncome, IncomeStream } from '@/types/create-income';
+import {
+    CreateIncome,
+    IncomeStream,
+    IncomeStreamBusiness,
+    IncomeStreamFreelance,
+    IncomeStreamJob,
+} from '@/types/create-income';
 
 interface CreateIncomeDrawerProps {
     setOptimisticIncomeStreams: (value: IncomeStream) => void;
@@ -32,7 +38,16 @@ const CreateIncomeDrawer = ({
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const btnRef = useRef<HTMLButtonElement>(null);
-    const formikRef = useRef<FormikProps<CreateIncome>>(null);
+    const formikRef =
+        useRef<
+            FormikProps<
+                CreateIncome<
+                    | IncomeStreamJob
+                    | IncomeStreamBusiness
+                    | IncomeStreamFreelance
+                >
+            >
+        >(null);
 
     const handleSubmit = async () => {
         if (formikRef.current) {
