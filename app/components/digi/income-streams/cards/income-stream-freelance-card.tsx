@@ -37,7 +37,7 @@ const IncomeStreamFreelanceCard = ({
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
-                            'repeat(2, 1fr)',
+                            'repeat(1, 1fr)',
                         ]}
                         maxWidth="sm"
                     >
