@@ -44,6 +44,8 @@ export type IncomeStreamFreelance = {
     type: IncomeType;
     service_offered: string;
     skills: string[];
+    payment_type: string;
+    rate: string;
 };
 
 export type CreateIncome<T = void> = {

@@ -43,6 +43,8 @@ const FreelanceForm = ({
                         type: IncomeTypeEnum.FREELANCE,
                         service_offered: '',
                         skills: [],
+                        payment_type: '',
+                        rate: '',
                     },
                     monthly_expenses: [],
                 }}
@@ -81,8 +83,8 @@ const FreelanceForm = ({
                                 </option>
                             </Field>
                         </FormControl>
-
                         <Flex gap="8" flexDirection="column">
+                            {/* SERVICE OFFERED AND SKILLS, EXPERTIES */}
                             <Flex gap="4" flexDirection="column">
                                 <Flex gap="2" flexDirection="column">
                                     <FormControl>
@@ -186,6 +188,32 @@ const FreelanceForm = ({
                                             </Flex>
                                         )}
                                     />
+                                </Flex>
+                            </Flex>
+                            {/* PAYMENT TYPE AND RATE */}
+                            <Flex gap="4" flexDirection="column">
+                                <Flex gap="2" flexDirection="column">
+                                    <FormControl>
+                                        <FormLabel>Payment Type</FormLabel>
+                                        <Field
+                                            as={Input}
+                                            type="text"
+                                            placeholder="Enter your payment type."
+                                            name="income.payment_type"
+                                        />
+                                    </FormControl>
+                                </Flex>
+                                <Flex gap="2" flexDirection="column">
+                                    {/* TODO: dropdown choices */}
+                                    <FormControl>
+                                        <FormLabel>Rate</FormLabel>
+                                        <Field
+                                            as={Input}
+                                            type="text"
+                                            placeholder="Enter your rate e.g. hourly, daily, weekly."
+                                            name="income.rate"
+                                        />
+                                    </FormControl>
                                 </Flex>
                             </Flex>
 
