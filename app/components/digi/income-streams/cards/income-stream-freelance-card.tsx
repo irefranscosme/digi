@@ -1,6 +1,7 @@
 import { IncomeStreamFreelance } from '@/types/create-income';
 import {
     Box,
+    Button,
     Card,
     CardBody,
     CardHeader,
@@ -30,7 +31,7 @@ const IncomeStreamFreelanceCard = ({
             </CardHeader>
 
             <CardBody overflow="hidden">
-                <Flex justifyContent="space-between">
+                <Flex justifyContent="space-between" height="100%">
                     <Grid
                         gap="2"
                         templateColumns={[
@@ -40,6 +41,7 @@ const IncomeStreamFreelanceCard = ({
                             'repeat(1, 1fr)',
                         ]}
                         maxWidth="sm"
+                        gridTemplateRows={'auto 1fr auto'}
                     >
                         <GridItem>
                             <Heading
@@ -87,8 +89,17 @@ const IncomeStreamFreelanceCard = ({
                                 )}
                             </Text>
                         </GridItem>
+                        <GridItem>
+                            <Button flexGrow={1}>View</Button>
+                        </GridItem>
                     </Grid>
-                    <Box borderRadius="0.4em" position="relative" width="15em">
+                    <Box
+                        borderRadius="0.4em"
+                        position="absolute"
+                        width="15em"
+                        right="0"
+                        top="8em"
+                    >
                         <Image
                             src="assets/backgrounds/suitcase.png"
                             alt="suitcase.png"

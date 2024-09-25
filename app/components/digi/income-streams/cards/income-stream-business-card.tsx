@@ -1,6 +1,7 @@
 import { IncomeStreamBusiness } from '@/types/create-income';
 import {
     Box,
+    Button,
     Card,
     CardBody,
     CardHeader,
@@ -30,7 +31,7 @@ const IncomeStreamBusinessCard = ({
             </CardHeader>
 
             <CardBody overflow="hidden">
-                <Flex justifyContent="space-between">
+                <Flex justifyContent="space-between" height="100%">
                     <Grid
                         gap="2"
                         templateColumns={[
@@ -40,6 +41,7 @@ const IncomeStreamBusinessCard = ({
                             'repeat(1, 1fr)',
                         ]}
                         maxWidth="sm"
+                        gridTemplateRows={'auto 1fr auto'}
                     >
                         <GridItem>
                             <Heading
@@ -96,25 +98,16 @@ const IncomeStreamBusinessCard = ({
                             </Text>
                         </GridItem>
                         <GridItem>
-                            <Heading
-                                fontSize="1em"
-                                lineHeight="1.272"
-                                letterSpacing="-0.014em"
-                                color="gray.400"
-                                fontWeight="medium"
-                            >
-                                Business Location
-                            </Heading>
-                            <Text
-                                fontSize="1em"
-                                lineHeight="1.618"
-                                letterSpacing="-0.011em"
-                            >
-                                {income.business_location || 'N/A'}
-                            </Text>
+                            <Button flexGrow={1}>View</Button>
                         </GridItem>
                     </Grid>
-                    <Box borderRadius="0.4em" position="relative" width="15em">
+                    <Box
+                        borderRadius="0.4em"
+                        position="absolute"
+                        width="15em"
+                        right="0"
+                        top="8em"
+                    >
                         <Image
                             src="assets/backgrounds/suitcase.png"
                             alt="suitcase.png"

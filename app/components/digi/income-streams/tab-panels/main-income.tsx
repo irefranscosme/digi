@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Button, Flex, Grid, GridItem } from '@chakra-ui/react';
 import CreateIncomeDrawer from '../create-income-drawer';
 import {
     type Income,
@@ -115,7 +115,7 @@ const MainIncome = ({
                 ]}
             >
                 {optimisticIncomeStreams?.map((income) => (
-                    <GridItem key={income.id}>
+                    <GridItem key={income.id} height="20em" pb="4">
                         <Income income={income.income} />
                     </GridItem>
                 ))}
