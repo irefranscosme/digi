@@ -37,7 +37,7 @@ const IncomeStreamBusinessCard = ({
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
                             'repeat(1, 1fr)',
-                            'repeat(2, 1fr)',
+                            'repeat(1, 1fr)',
                         ]}
                         maxWidth="sm"
                     >
@@ -75,6 +75,24 @@ const IncomeStreamBusinessCard = ({
                                 letterSpacing="-0.011em"
                             >
                                 {income.service_offered || 'N/A'}
+                            </Text>
+                        </GridItem>
+                        <GridItem>
+                            <Heading
+                                fontSize="1em"
+                                lineHeight="1.272"
+                                letterSpacing="-0.014em"
+                                color="gray.400"
+                                fontWeight="medium"
+                            >
+                                Target Audience
+                            </Heading>
+                            <Text
+                                fontSize="1em"
+                                lineHeight="1.618"
+                                letterSpacing="-0.011em"
+                            >
+                                {income.target_audience || 'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
