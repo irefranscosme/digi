@@ -2,6 +2,7 @@
 
 import {
     CreateIncome,
+    Income,
     IncomeStream,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
@@ -20,15 +21,17 @@ import {
     Text,
 } from '@chakra-ui/react';
 import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
-import { RefObject } from 'react';
+import { ReactNode, RefObject } from 'react';
+import JobFields from './form/job-fields';
+// import IncomeStreamJob from './income-stream-job';
 
-const isIncomeJob = (
-    income: IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance | '',
-): boolean | IncomeStreamJob => {
-    if (typeof income === 'string') return false;
-    if (income.type == IncomeTypeEnum.JOB) return income as IncomeStreamJob;
-    return false;
-};
+// const isIncomeJob = (
+//     income: IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance | '',
+// ): boolean | IncomeStreamJob => {
+//     if (typeof income === 'string') return false;
+//     if (income.type == IncomeTypeEnum.JOB) return income as IncomeStreamJob;
+//     return false;
+// };
 
 const CreateIncomeForm = ({
     formikRef,
@@ -39,6 +42,31 @@ const CreateIncomeForm = ({
     setOptimisticIncomeStreams: (value: IncomeStream) => void;
     insertIncomeStream: (incomeStream: IncomeStream) => void;
 }) => {
+    const incomeTypeComponent: Record<string, ReactNode> = {
+        [IncomeTypeEnum.JOB]: <JobFields />,
+    };
+
+    const handleSubmit = async (incomeStream: CreateIncome) => {
+        if (typeof incomeStream?.income === 'string') return;
+
+        const incomeType: Record<string, Income> = {
+            [IncomeTypeEnum.JOB]: incomeStream.income as IncomeStreamJob,
+            [IncomeTypeEnum.BUSINESS]:
+                incomeStream.income as IncomeStreamBusiness,
+            [IncomeTypeEnum.FREELANCE]:
+                incomeStream.income as IncomeStreamFreelance,
+        };
+
+        setOptimisticIncomeStreams({
+            income: incomeType[incomeStream.income.type],
+            monthly_expenses: incomeStream.monthly_expenses,
+        });
+        insertIncomeStream({
+            income: incomeType[incomeStream.income.type],
+            monthly_expenses: incomeStream.monthly_expenses,
+        });
+    };
+
     return (
         <Stack gap="8">
             <Formik<CreateIncome>
@@ -46,102 +74,31 @@ const CreateIncomeForm = ({
                     income: '',
                     monthly_expenses: [],
                 }}
-                onSubmit={async (values) => {
-                    if (isIncomeJob(values.income)) {
-                        setOptimisticIncomeStreams({
-                            income: values.income as IncomeStreamJob,
-                            monthly_expenses: values.monthly_expenses,
-                        });
-                        insertIncomeStream({
-                            income: values.income as IncomeStreamJob,
-                            monthly_expenses: values.monthly_expenses,
-                        });
-                    } else {
-                    }
-                }}
-                render={({ values: { monthly_expenses } }) => (
+                onSubmit={handleSubmit}
+                render={({ values: { monthly_expenses, income } }) => (
                     <Form>
+                        <FormControl mb="4">
+                            <FormLabel>Income type</FormLabel>
+                            <Field as={Select} name="income.type">
+                                <option value={IncomeTypeEnum.JOB}>Job</option>
+                                <option value={IncomeTypeEnum.BUSINESS}>
+                                    Business
+                                </option>
+                                <option value={IncomeTypeEnum.FREELANCE}>
+                                    Freelance
+                                </option>
+                                <option value={IncomeTypeEnum.PART_TIME}>
+                                    Part-Time
+                                </option>
+                            </Field>
+                        </FormControl>
+
                         <Flex gap="8" flexDirection="column">
-                            {/* JOB INFORMATION */}
-                            <Flex gap="4" flexDirection="column">
-                                <Flex gap="2" flexDirection="column">
-                                    <FormControl>
-                                        <FormLabel>Income type</FormLabel>
-                                        <Field as={Select} name="income.type">
-                                            <option value={IncomeTypeEnum.JOB}>
-                                                Job
-                                            </option>
-                                            <option
-                                                value={IncomeTypeEnum.BUSINESS}
-                                            >
-                                                Business
-                                            </option>
-                                            <option
-                                                value={IncomeTypeEnum.FREELANCE}
-                                            >
-                                                Freelance
-                                            </option>
-                                            <option
-                                                value={IncomeTypeEnum.PART_TIME}
-                                            >
-                                                Part-Time
-                                            </option>
-                                        </Field>
-                                    </FormControl>
-                                    <FormControl>
-                                        <FormLabel>Job Title</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter your job title."
-                                            name="income.job_title"
-                                        />
-                                    </FormControl>
-                                </Flex>
-                                <Flex gap="2">
-                                    <FormControl>
-                                        <FormLabel>Job Type</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter job type."
-                                            name="income.job_type"
-                                        />
-                                    </FormControl>
-                                    <FormControl>
-                                        <FormLabel>Job Location</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter job location."
-                                            name="income.job_location"
-                                        />
-                                    </FormControl>
-                                </Flex>
-                            </Flex>
-                            {/* JOB SCHEDULE COST */}
-                            <Flex gap="4" flexDirection="column">
-                                <Flex gap="2" flexDirection="column">
-                                    <FormControl>
-                                        <FormLabel>Work Schedule</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter your work schedule."
-                                            name="income.work_schedule"
-                                        />
-                                    </FormControl>
-                                    <FormControl>
-                                        <FormLabel>Travel Cost</FormLabel>
-                                        <Field
-                                            as={Input}
-                                            type="text"
-                                            placeholder="Enter amount."
-                                            name="income.travel_cost"
-                                        />
-                                    </FormControl>
-                                </Flex>
-                            </Flex>
+                            {typeof income !== 'string' ? (
+                                incomeTypeComponent[income?.type]
+                            ) : (
+                                <JobFields />
+                            )}
                             {/* MONTHLY EXPENSE */}
                             <FieldArray
                                 name="monthly_expenses"
