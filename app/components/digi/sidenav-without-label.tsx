@@ -43,7 +43,7 @@ const SideNavWithoutLabel = () => {
                             width="100%"
                             hoverIcon={
                                 <DashboardIcon
-                                    color="white"
+                                    color="gray"
                                     width="20"
                                     height="20"
                                 />
@@ -61,7 +61,7 @@ const SideNavWithoutLabel = () => {
                             width="100%"
                             hoverIcon={
                                 <ChartMixDollarIcon
-                                    color="white"
+                                    color="gray"
                                     width="20"
                                     height="20"
                                 />
