@@ -6,6 +6,7 @@ import {
     type Income,
     IncomeStream,
     IncomeStreamBusiness,
+    IncomeStreamFreelance,
     IncomeStreamJob,
     IncomeTypeEnum,
 } from '@/types/create-income';
@@ -22,6 +23,9 @@ const IncomeStreamJobCard = dynamic(
 const IncomeStreamBusinessCard = dynamic(
     () => import('../cards/income-stream-business-card'),
 );
+const IncomeStreamFreelanceCard = dynamic(
+    () => import('../cards/income-stream-freelance-card'),
+);
 
 const Income = ({ income }: { income: Income }) => {
     switch (income.type) {
@@ -31,6 +35,12 @@ const Income = ({ income }: { income: Income }) => {
             return (
                 <IncomeStreamBusinessCard
                     income={income as IncomeStreamBusiness}
+                />
+            );
+        case IncomeTypeEnum.FREELANCE:
+            return (
+                <IncomeStreamFreelanceCard
+                    income={income as IncomeStreamFreelance}
                 />
             );
     }

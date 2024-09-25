@@ -22,7 +22,10 @@ const IncomeStreamBusinessCard = ({
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.business_name || 'N/A'} - {income.type}
+                    {income.business_name || 'N/A'} {' - '}
+                    <Text display={'inline-block'} textTransform={'capitalize'}>
+                        {income.type}
+                    </Text>
                 </Heading>
             </CardHeader>
 

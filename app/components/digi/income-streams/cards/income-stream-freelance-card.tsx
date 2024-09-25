@@ -1,4 +1,4 @@
-import { type IncomeStreamJob } from '@/types/create-income';
+import { IncomeStreamFreelance } from '@/types/create-income';
 import {
     Box,
     Card,
@@ -13,12 +13,16 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
+const IncomeStreamFreelanceCard = ({
+    income,
+}: {
+    income: IncomeStreamFreelance;
+}) => {
     return (
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.job_title} {' - '}
+                    {income.service_offered || 'N/A'} {' - '}
                     <Text display={'inline-block'} textTransform={'capitalize'}>
                         {income.type}
                     </Text>
@@ -45,14 +49,14 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 color="gray.400"
                                 fontWeight="medium"
                             >
-                                Job Location
+                                Services/Products Offered
                             </Heading>
                             <Text
                                 fontSize="1em"
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.job_location}
+                                {income.service_offered || 'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -63,14 +67,24 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 color="gray.400"
                                 fontWeight="medium"
                             >
-                                Work Schedule
+                                Skills and Expertise
                             </Heading>
                             <Text
                                 fontSize="1em"
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.work_schedule}
+                                {income.skills.length > 0 ? (
+                                    <>
+                                        {income.skills.map((skill, index) => (
+                                            <Flex key={`${skill}.${index}`}>
+                                                <Text>{skill}</Text>
+                                            </Flex>
+                                        ))}
+                                    </>
+                                ) : (
+                                    'N/A'
+                                )}
                             </Text>
                         </GridItem>
                     </Grid>
@@ -88,4 +102,4 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
     );
 };
 
-export default IncomeStreamJobCard;
+export default IncomeStreamFreelanceCard;
