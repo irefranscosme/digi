@@ -45,6 +45,7 @@ const BusinessForm = ({
                         sector: '',
                         service_offered: '',
                         target_audience: '',
+                        business_location: '',
                         type: IncomeTypeEnum.BUSINESS,
                     },
                     monthly_expenses: [],
@@ -106,6 +107,17 @@ const BusinessForm = ({
                                             type="text"
                                             placeholder="Enter your business name."
                                             name="income.business_name"
+                                        />
+                                    </FormControl>
+                                </Flex>
+                                <Flex gap="2" flexDirection="column">
+                                    <FormControl>
+                                        <FormLabel>Location</FormLabel>
+                                        <Field
+                                            as={Input}
+                                            type="text"
+                                            placeholder="Enter your business name."
+                                            name="income.business_location"
                                         />
                                     </FormControl>
                                 </Flex>

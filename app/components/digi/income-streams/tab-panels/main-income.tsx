@@ -5,20 +5,34 @@ import CreateIncomeDrawer from '../create-income-drawer';
 import {
     type Income,
     IncomeStream,
-    IncomeStreamJob as IncomeStreamJobType,
+    IncomeStreamBusiness,
+    IncomeStreamJob,
     IncomeTypeEnum,
 } from '@/types/create-income';
-import IncomeStreamJob from '../income-stream-job';
 import { useEffect, useOptimistic, useState } from 'react';
 import {
     createIncomeStream,
     getIncomeStreams,
 } from '@/actions/create-income-action';
+import dynamic from 'next/dynamic';
+
+const IncomeStreamJobCard = dynamic(
+    () => import('../cards/income-stream-job-card'),
+);
+const IncomeStreamBusinessCard = dynamic(
+    () => import('../cards/income-stream-business-card'),
+);
 
 const Income = ({ income }: { income: Income }) => {
     switch (income.type) {
         case IncomeTypeEnum.JOB:
-            return <IncomeStreamJob income={income as IncomeStreamJobType} />;
+            return <IncomeStreamJobCard income={income as IncomeStreamJob} />;
+        case IncomeTypeEnum.BUSINESS:
+            return (
+                <IncomeStreamBusinessCard
+                    income={income as IncomeStreamBusiness}
+                />
+            );
     }
 };
 

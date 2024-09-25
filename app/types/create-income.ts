@@ -37,6 +37,7 @@ export type IncomeStreamBusiness = {
     business_name: string;
     service_offered: string;
     target_audience: string;
+    business_location: string;
 };
 
 export type IncomeStreamFreelance = {

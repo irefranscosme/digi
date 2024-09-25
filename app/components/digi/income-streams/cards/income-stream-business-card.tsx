@@ -1,4 +1,4 @@
-import { type IncomeStreamJob } from '@/types/create-income';
+import { IncomeStreamBusiness } from '@/types/create-income';
 import {
     Box,
     Card,
@@ -13,12 +13,16 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
+const IncomeStreamBusinessCard = ({
+    income,
+}: {
+    income: IncomeStreamBusiness;
+}) => {
     return (
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.job_title} - {income.type}
+                    {income.business_name || 'N/A'} - {income.type}
                 </Heading>
             </CardHeader>
 
@@ -42,14 +46,14 @@ const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
                                 color="gray.400"
                                 fontWeight="medium"
                             >
-                                Job Location
+                                Sector
                             </Heading>
                             <Text
                                 fontSize="1em"
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.job_location}
+                                {income.sector || 'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -60,14 +64,32 @@ const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
                                 color="gray.400"
                                 fontWeight="medium"
                             >
-                                Work Schedule
+                                Services/Products Offered
                             </Heading>
                             <Text
                                 fontSize="1em"
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.work_schedule}
+                                {income.service_offered || 'N/A'}
+                            </Text>
+                        </GridItem>
+                        <GridItem>
+                            <Heading
+                                fontSize="1em"
+                                lineHeight="1.272"
+                                letterSpacing="-0.014em"
+                                color="gray.400"
+                                fontWeight="medium"
+                            >
+                                Business Location
+                            </Heading>
+                            <Text
+                                fontSize="1em"
+                                lineHeight="1.618"
+                                letterSpacing="-0.011em"
+                            >
+                                {income.business_location || 'N/A'}
                             </Text>
                         </GridItem>
                     </Grid>
@@ -85,4 +107,4 @@ const IncomeStreamJob = ({ income }: { income: IncomeStreamJob }) => {
     );
 };
 
-export default IncomeStreamJob;
+export default IncomeStreamBusinessCard;
