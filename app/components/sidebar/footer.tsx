@@ -13,10 +13,10 @@ import {
 import React from 'react';
 import MenuDotIcon from '../icons/menu-dot';
 import Logout from '../auth/logout';
-import { createSupabaseServerClient } from '@/lib/supabase/server-client';
+import { createClient } from '@/utils/supabase/server';
 
 const Footer = async () => {
-    const supabase = createSupabaseServerClient();
+    const supabase = createClient();
     const {
         data: { user },
     } = await supabase.auth.getUser();

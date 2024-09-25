@@ -1,12 +1,12 @@
 'use client';
 
-import { createSupabaseBrowserClient } from '@/lib/supabase/browser-client';
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/utils/supabase/client';
 
 const Logout = () => {
-    const supabase = createSupabaseBrowserClient();
+    const supabase = createClient();
     const router = useRouter();
 
     const handleLogout = async () => {

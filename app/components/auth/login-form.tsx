@@ -1,6 +1,6 @@
 'use client';
 
-import { createSupabaseBrowserClient } from '@/lib/supabase/browser-client';
+import { createClient } from '@/utils/supabase/client';
 import { Button, Flex, FormControl, Input } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ const LoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const supabase = createSupabaseBrowserClient();
+        const supabase = createClient();
 
         const { error } = await supabase.auth.signInWithPassword({
             email,

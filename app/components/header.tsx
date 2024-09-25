@@ -8,10 +8,10 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import NavLink from './nav-link';
-import { createSupabaseServerClient } from '@/lib/supabase/server-client';
+import { createClient } from '@/utils/supabase/server';
 
 const Header = async () => {
-    const supabase = createSupabaseServerClient();
+    const supabase = createClient();
     const {
         data: { user },
     } = await supabase.auth.getUser();
