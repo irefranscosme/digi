@@ -40,6 +40,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                     job_title: '',
                     type: IncomeTypeEnum.JOB,
                     work_schedule: '',
+                    employment_type: '',
                 },
                 monthly_expenses: [],
             }}
@@ -109,6 +110,18 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                     />
                                 </FormControl>
                             </Flex>
+                            {/* TODO: dropdown choices for employment type. */}
+                            <Flex>
+                                <FormControl>
+                                    <FormLabel>Employment Type</FormLabel>
+                                    <Field
+                                        as={Input}
+                                        type="text"
+                                        placeholder="Enter your employment type."
+                                        name="income.employment_type"
+                                    />
+                                </FormControl>
+                            </Flex>
                         </Flex>
                         {/* JOB SCHEDULE COST */}
                         <Flex gap="4" flexDirection="column">
@@ -120,15 +133,6 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         type="text"
                                         placeholder="Enter your work schedule."
                                         name="income.work_schedule"
-                                    />
-                                </FormControl>
-                                <FormControl>
-                                    <FormLabel>Travel Cost</FormLabel>
-                                    <Field
-                                        as={Input}
-                                        type="text"
-                                        placeholder="Enter amount."
-                                        name="income.travel_cost"
                                     />
                                 </FormControl>
                             </Flex>

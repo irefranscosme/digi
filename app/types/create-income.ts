@@ -28,7 +28,7 @@ export type IncomeStreamJob = {
     job_title: string;
     job_location: string;
     work_schedule: string;
-    // TODO: employment
+    employment_type: string;
 };
 
 export type IncomeStreamBusiness = {
