@@ -10,11 +10,8 @@ import {
     IncomeStreamJob,
     IncomeTypeEnum,
 } from '@/types/create-income';
-import { useEffect, useOptimistic, useState } from 'react';
-import {
-    createIncomeStream,
-    getIncomeStreams,
-} from '@/actions/create-income-action';
+import { useOptimistic, useState } from 'react';
+import { createIncomeStream } from '@/actions/create-income-action';
 import dynamic from 'next/dynamic';
 
 const IncomeStreamJobCard = dynamic(
@@ -63,17 +60,6 @@ const MainIncome = ({
     const [incomeStreamLoading, setIncomeStreamLoading] =
         useState<boolean>(false);
 
-    const fetchIncomeStreams = async () => {
-        try {
-            const result = await getIncomeStreams();
-            if (result) {
-                setIncomeStreams(result as IncomeStream[]);
-            }
-        } catch (e) {
-            console.error(e);
-        }
-    };
-
     const insertIncomeStream = async (IncomeStream: IncomeStream) => {
         setIncomeStreamLoading(true);
         try {
@@ -91,10 +77,6 @@ const MainIncome = ({
             setIncomeStreamLoading(false);
         }
     };
-
-    useEffect(() => {
-        fetchIncomeStreams();
-    }, []);
 
     return (
         <Flex flexDirection="column" gap="4">
