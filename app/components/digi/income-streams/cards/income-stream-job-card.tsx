@@ -1,4 +1,4 @@
-import { type IncomeStreamJob } from '@/types/create-income';
+import { IncomeStreamWithType } from '@/types/create-income';
 import {
     Box,
     Button,
@@ -14,14 +14,22 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
+interface IncomeStreamJobCardProps {
+    incomeStream?: IncomeStreamWithType;
+    onView: () => void;
+}
+
+const IncomeStreamJobCard = ({
+    incomeStream,
+    onView,
+}: IncomeStreamJobCardProps) => {
     return (
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.job_title} {' - '}
+                    {incomeStream?.job?.job_title} {' - '}
                     <Text display={'inline-block'} textTransform={'capitalize'}>
-                        {income.type}
+                        {incomeStream?.type}
                     </Text>
                 </Heading>
             </CardHeader>
@@ -54,7 +62,7 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.job_location}
+                                {incomeStream?.job?.job_location}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -72,7 +80,7 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.work_schedule}
+                                {incomeStream?.job?.work_schedule}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -90,11 +98,13 @@ const IncomeStreamJobCard = ({ income }: { income: IncomeStreamJob }) => {
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.employment_type || 'N/A'}
+                                {incomeStream?.job?.employment_type || 'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
-                            <Button flexGrow={1}>View</Button>
+                            <Button flexGrow={1} onClick={onView}>
+                                View
+                            </Button>
                         </GridItem>
                     </Grid>
                     <Box

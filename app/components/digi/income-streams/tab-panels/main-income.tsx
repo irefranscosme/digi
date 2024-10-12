@@ -1,16 +1,16 @@
 'use client';
 
-import { Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Flex, Grid, GridItem, useDisclosure } from '@chakra-ui/react';
 import CreateIncomeDrawer from '../create-income-drawer';
 import {
-    type Income,
     IncomeStream,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
+    IncomeStreamWithType,
     IncomeTypeEnum,
 } from '@/types/create-income';
-import { useOptimistic, useState } from 'react';
+import { useOptimistic, useRef, useState } from 'react';
 import { createIncomeStream } from '@/actions/create-income-action';
 import dynamic from 'next/dynamic';
 
@@ -24,32 +24,44 @@ const IncomeStreamFreelanceCard = dynamic(
     () => import('../cards/income-stream-freelance-card'),
 );
 
-const Income = ({ income }: { income: Income }) => {
-    switch (income.type) {
+interface IncomeProps {
+    incomeStream: IncomeStreamWithType;
+    onView: () => void;
+}
+
+const Income = ({ incomeStream, onView }: IncomeProps) => {
+    switch ('type' in incomeStream && incomeStream.type) {
         case IncomeTypeEnum.JOB:
-            return <IncomeStreamJobCard income={income as IncomeStreamJob} />;
-        case IncomeTypeEnum.BUSINESS:
             return (
-                <IncomeStreamBusinessCard
-                    income={income as IncomeStreamBusiness}
+                <IncomeStreamJobCard
+                    incomeStream={incomeStream}
+                    onView={onView}
                 />
             );
-        case IncomeTypeEnum.FREELANCE:
-            return (
-                <IncomeStreamFreelanceCard
-                    income={income as IncomeStreamFreelance}
-                />
-            );
+        // case IncomeTypeEnum.BUSINESS:
+        //     return (
+        //         <IncomeStreamBusinessCard
+        //             income={income as IncomeStreamBusiness}
+        //         />
+        //     );
+        // case IncomeTypeEnum.FREELANCE:
+        //     return (
+        //         <IncomeStreamFreelanceCard
+        //             income={income as IncomeStreamFreelance}
+        //         />
+        //     );
     }
 };
 
 const MainIncome = ({
     initialIncomeStreams,
 }: {
-    initialIncomeStreams: IncomeStream[];
+    initialIncomeStreams: IncomeStreamWithType[];
 }) => {
+    const incomeStreamDrawer = useDisclosure();
+    const incomeStreamCurrentRef = useRef<IncomeStream>();
     const [incomeStreams, setIncomeStreams] =
-        useState<IncomeStream[]>(initialIncomeStreams);
+        useState<IncomeStreamWithType[]>(initialIncomeStreams);
     const [optimisticIncomeStreams, setOptimisticIncomeStreams] = useOptimistic(
         incomeStreams || [],
         (state: IncomeStream[], newIncomeStream: IncomeStream) => [
@@ -86,6 +98,10 @@ const MainIncome = ({
                     insertIncomeStream(incomeStream);
                 }}
                 isLoading={incomeStreamLoading}
+                isOpen={incomeStreamDrawer.isOpen}
+                onOpen={incomeStreamDrawer.onOpen}
+                onClose={incomeStreamDrawer.onClose}
+                incomeStream={incomeStreamCurrentRef.current}
             />
             <Grid
                 gap="2"
@@ -98,7 +114,13 @@ const MainIncome = ({
             >
                 {optimisticIncomeStreams?.map((income) => (
                     <GridItem key={income.id} height="20em" pb="4">
-                        <Income income={income.income} />
+                        <Income
+                            incomeStream={income}
+                            onView={() => {
+                                incomeStreamCurrentRef.current = income;
+                                incomeStreamDrawer.onOpen();
+                            }}
+                        />
                     </GridItem>
                 ))}
             </Grid>

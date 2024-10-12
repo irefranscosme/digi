@@ -1,8 +1,5 @@
 import {
-    CreateIncome,
-    CreateIncomeJob,
-    IncomeStreamBusiness,
-    IncomeStreamFreelance,
+    IncomeStream,
     IncomeStreamJob,
     IncomeTypeEnum,
 } from '@/types/create-income';
@@ -20,37 +17,36 @@ import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
 import React, { ChangeEvent, RefObject } from 'react';
 
 interface JobFormProps {
-    handleSubmit: (incomeStream: CreateIncomeJob) => void;
+    handleSubmit: (incomeStream: IncomeStream) => void;
     setIncomeType: (incomeType: IncomeTypeEnum) => void;
-    formikRef: RefObject<
-        FormikProps<
-            CreateIncome<
-                IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance
-            >
-        >
-    >;
+    incomeStreamJob?: IncomeStreamJob;
+    incomeStream?: IncomeStream;
+    formikRef?: RefObject<FormikProps<IncomeStream & IncomeStreamJob>>;
 }
 
-const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
+const JobForm = ({
+    handleSubmit,
+    setIncomeType,
+    incomeStreamJob,
+    incomeStream,
+    formikRef,
+}: JobFormProps) => {
+    const initialValues: IncomeStream & IncomeStreamJob = {
+        id: incomeStreamJob?.id,
+        type: incomeStream?.type || IncomeTypeEnum.JOB,
+        monthly_expenses: incomeStream?.monthly_expenses || [],
+        employment_type: incomeStreamJob?.employment_type || '',
+        job_location: incomeStreamJob?.job_location || '',
+        job_title: incomeStreamJob?.job_title || '',
+        work_schedule: incomeStreamJob?.work_schedule || '',
+    };
+
     return (
-        <Formik<CreateIncome<IncomeStreamJob>>
-            initialValues={{
-                income: {
-                    job_location: '',
-                    job_title: '',
-                    type: IncomeTypeEnum.JOB,
-                    work_schedule: '',
-                    employment_type: '',
-                },
-                monthly_expenses: [],
-            }}
-            onSubmit={handleSubmit}
-            innerRef={
-                formikRef as RefObject<
-                    FormikProps<CreateIncome<IncomeStreamJob>>
-                >
-            }
+        <Formik<IncomeStream & IncomeStreamJob>
+            initialValues={initialValues}
+            onSubmit={() => handleSubmit(initialValues)}
             enableReinitialize={true}
+            innerRef={formikRef}
         >
             {({ values: { monthly_expenses } }) => (
                 <Form>
@@ -58,7 +54,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                         <FormLabel>Income type</FormLabel>
                         <Field
                             as={Select}
-                            name="income.type"
+                            name="type"
                             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                                 setIncomeType(e.target.value as IncomeTypeEnum);
                             }}
@@ -86,7 +82,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         as={Input}
                                         type="text"
                                         placeholder="Enter your job title."
-                                        name="income.job_title"
+                                        name="job_title"
                                     />
                                 </FormControl>
                             </Flex>
@@ -97,7 +93,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         as={Input}
                                         type="text"
                                         placeholder="Enter job type."
-                                        name="income.job_type"
+                                        name="job_type"
                                     />
                                 </FormControl>
                                 <FormControl>
@@ -106,7 +102,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         as={Input}
                                         type="text"
                                         placeholder="Enter job location."
-                                        name="income.job_location"
+                                        name="job_location"
                                     />
                                 </FormControl>
                             </Flex>
@@ -118,7 +114,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         as={Input}
                                         type="text"
                                         placeholder="Enter your employment type."
-                                        name="income.employment_type"
+                                        name="employment_type"
                                     />
                                 </FormControl>
                             </Flex>
@@ -132,7 +128,7 @@ const JobForm = ({ handleSubmit, setIncomeType, formikRef }: JobFormProps) => {
                                         as={Input}
                                         type="text"
                                         placeholder="Enter your work schedule."
-                                        name="income.work_schedule"
+                                        name="work_schedule"
                                     />
                                 </FormControl>
                             </Flex>

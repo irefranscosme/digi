@@ -1,6 +1,5 @@
 import {
     CreateIncome,
-    CreateIncomeBusiness,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
@@ -19,43 +18,42 @@ import {
 import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
 import React, { ChangeEvent, RefObject } from 'react';
 
-interface BusinessFormProps {
-    handleSubmit: (incomeStream: CreateIncomeBusiness) => void;
+interface BusinessFormProps<T, S> {
+    handleSubmit: (incomeStream: CreateIncome<T>) => void;
     setIncomeType: (incomeType: IncomeTypeEnum) => void;
-    formikRef: RefObject<
-        FormikProps<
-            CreateIncome<
-                IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance
-            >
-        >
-    >;
+    formikRef: RefObject<FormikProps<CreateIncome<T>>>;
+    incomeStream?: CreateIncome<S>;
 }
 
-const BusinessForm = ({
+const BusinessForm = <
+    T extends
+        | IncomeStreamJob
+        | IncomeStreamBusiness
+        | IncomeStreamFreelance
+        | void,
+    S extends IncomeStreamBusiness,
+>({
     handleSubmit,
     setIncomeType,
     formikRef,
-}: BusinessFormProps) => {
+}: BusinessFormProps<T, S>) => {
+    const initialValues: CreateIncome<T> = {
+        income: {
+            business_name: '',
+            sector: '',
+            service_offered: '',
+            target_audience: '',
+            business_location: '',
+            type: IncomeTypeEnum.BUSINESS,
+        } as T,
+        monthly_expenses: [],
+    };
     return (
         <>
-            <Formik<CreateIncomeBusiness>
-                initialValues={{
-                    income: {
-                        business_name: '',
-                        sector: '',
-                        service_offered: '',
-                        target_audience: '',
-                        business_location: '',
-                        type: IncomeTypeEnum.BUSINESS,
-                    },
-                    monthly_expenses: [],
-                }}
+            <Formik
+                initialValues={initialValues}
                 onSubmit={handleSubmit}
-                innerRef={
-                    formikRef as RefObject<
-                        FormikProps<CreateIncome<IncomeStreamBusiness>>
-                    >
-                }
+                innerRef={formikRef}
                 enableReinitialize={true}
             >
                 {({ values: { monthly_expenses } }) => (

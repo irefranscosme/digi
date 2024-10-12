@@ -11,48 +11,98 @@ import {
     DrawerHeader,
     DrawerOverlay,
     Heading,
-    useDisclosure,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
-import CreateIncomeForm from './create-income-form';
+import { ReactNode, useRef, useState } from 'react';
 import { FormikProps } from 'formik';
 import {
-    CreateIncome,
     IncomeStream,
     IncomeStreamBusiness,
     IncomeStreamFreelance,
     IncomeStreamJob,
+    IncomeTypeEnum,
 } from '@/types/create-income';
+import JobForm from './form/job-form';
 
 interface CreateIncomeDrawerProps {
     setOptimisticIncomeStreams: (value: IncomeStream) => void;
     insertIncomeStream: (incomeStream: IncomeStream) => void;
     isLoading: boolean;
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
+    incomeStream?: IncomeStream;
+    incomeStreamJob?: IncomeStreamJob;
 }
 
 const CreateIncomeDrawer = ({
     setOptimisticIncomeStreams,
     insertIncomeStream,
     isLoading,
+    isOpen,
+    onOpen,
+    onClose,
+    incomeStream,
+    incomeStreamJob,
 }: CreateIncomeDrawerProps) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
     const btnRef = useRef<HTMLButtonElement>(null);
-    const formikRef =
-        useRef<
-            FormikProps<
-                CreateIncome<
-                    | IncomeStreamJob
-                    | IncomeStreamBusiness
-                    | IncomeStreamFreelance
-                >
-            >
-        >(null);
+    const [incomeType, setIncomeType] = useState<IncomeTypeEnum>(
+        IncomeTypeEnum.JOB,
+    );
+    const jobFormRef =
+        useRef<FormikProps<IncomeStream & IncomeStreamJob>>(null);
+    const businessFormRef =
+        useRef<FormikProps<IncomeStream & IncomeStreamBusiness>>(null);
+    const freelanceFormRef =
+        useRef<FormikProps<IncomeStream & IncomeStreamFreelance>>(null);
 
-    const handleSubmit = async () => {
-        if (formikRef.current) {
-            formikRef.current.handleSubmit();
+    const handleSubmit = async (incomeStream: IncomeStream) => {
+        console.log(incomeStream);
+        setOptimisticIncomeStreams({
+            type: incomeStream.type,
+            monthly_expenses: incomeStream.monthly_expenses,
+        });
+        insertIncomeStream({
+            type: incomeStream.type,
+            monthly_expenses: incomeStream.monthly_expenses,
+        });
+    };
+
+    const handleSave = () => {
+        switch (incomeType) {
+            case IncomeTypeEnum.JOB:
+                jobFormRef.current?.submitForm();
+                break;
+            case IncomeTypeEnum.BUSINESS:
+                businessFormRef.current?.submitForm();
+                break;
+            case IncomeTypeEnum.FREELANCE:
+                freelanceFormRef.current?.submitForm();
+                break;
         }
+    };
+
+    const incomeTypeComponent: Record<string, ReactNode> = {
+        [IncomeTypeEnum.JOB]: (
+            <JobForm
+                handleSubmit={handleSubmit}
+                setIncomeType={setIncomeType}
+                incomeStream={incomeStream}
+                incomeStreamJob={incomeStreamJob}
+                formikRef={jobFormRef}
+            />
+        ),
+        // [IncomeTypeEnum.BUSINESS]: (
+        //     <BusinessForm
+        //         handleSubmit={handleSubmit}
+        //         setIncomeType={setIncomeType}
+        //     />
+        // ),
+        // [IncomeTypeEnum.FREELANCE]: (
+        //     <FreelanceForm
+        //         handleSubmit={handleSubmit}
+        //         setIncomeType={setIncomeType}
+        //     />
+        // ),
     };
 
     return (
@@ -87,15 +137,7 @@ const CreateIncomeDrawer = ({
                         </Heading>
                     </DrawerHeader>
 
-                    <DrawerBody>
-                        <CreateIncomeForm
-                            formikRef={formikRef}
-                            setOptimisticIncomeStreams={
-                                setOptimisticIncomeStreams
-                            }
-                            insertIncomeStream={insertIncomeStream}
-                        />
-                    </DrawerBody>
+                    <DrawerBody>{incomeTypeComponent[incomeType]}</DrawerBody>
 
                     <DrawerFooter>
                         <Button variant="outline" mr={3} onClick={onClose}>
@@ -103,7 +145,7 @@ const CreateIncomeDrawer = ({
                         </Button>
                         <Button
                             colorScheme="blue"
-                            onClick={handleSubmit}
+                            onClick={handleSave}
                             type="submit"
                             isLoading={isLoading}
                         >

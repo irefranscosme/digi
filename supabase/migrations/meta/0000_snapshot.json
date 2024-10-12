@@ -1,9 +1,123 @@
 {
-  "id": "f955417d-bb7a-4c5c-bd33-9604ae7c0565",
+  "id": "847de8ee-e281-425c-962c-d974451fb5c6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.income_stream_businesses": {
+      "name": "income_stream_businesses",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "sector": {
+          "name": "sector",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "business_name": {
+          "name": "business_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "business_location": {
+          "name": "business_location",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "service_offered": {
+          "name": "service_offered",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "target_audience": {
+          "name": "target_audience",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.income_stream_freelance": {
+      "name": "income_stream_freelance",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "job_title": {
+          "name": "job_title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "skills": {
+          "name": "skills",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.income_stream_jobs": {
+      "name": "income_stream_jobs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "job_title": {
+          "name": "job_title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "job_location": {
+          "name": "job_location",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "work_schedule": {
+          "name": "work_schedule",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "employment_type": {
+          "name": "employment_type",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.income_streams": {
       "name": "income_streams",
       "schema": "",
@@ -14,18 +128,24 @@
           "primaryKey": true,
           "notNull": true
         },
-        "income": {
-          "name": "income",
-          "type": "jsonb",
+        "related_type": {
+          "name": "related_type",
+          "type": "income_streams_income_type_enum",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "related_id": {
+          "name": "related_id",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "monthly_expenses": {
           "name": "monthly_expenses",
-          "type": "text[]",
+          "type": "jsonb[]",
           "primaryKey": false,
-          "notNull": false,
-          "default": "ARRAY[]::text[]"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -35,6 +155,16 @@
     }
   },
   "enums": {
+    "public.income_streams_income_type_enum": {
+      "name": "income_streams_income_type_enum",
+      "schema": "public",
+      "values": [
+        "job",
+        "business",
+        "freelance",
+        "part-time"
+      ]
+    },
     "public.income_streams_billing_enum": {
       "name": "income_streams_billing_enum",
       "schema": "public",

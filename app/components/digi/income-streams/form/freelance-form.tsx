@@ -18,42 +18,42 @@ import {
 import { Field, FieldArray, Form, Formik, FormikProps } from 'formik';
 import React, { ChangeEvent, RefObject } from 'react';
 
-interface FreelanceFormProps {
-    handleSubmit: (incomeStream: CreateIncome<IncomeStreamFreelance>) => void;
+interface FreelanceFormProps<T, S> {
+    handleSubmit: (incomeStream: CreateIncome<T>) => void;
     setIncomeType: (incomeType: IncomeTypeEnum) => void;
-    formikRef: RefObject<
-        FormikProps<
-            CreateIncome<
-                IncomeStreamJob | IncomeStreamBusiness | IncomeStreamFreelance
-            >
-        >
-    >;
+    formikRef: RefObject<FormikProps<CreateIncome<T>>>;
+    incomeStream?: CreateIncome<S>;
 }
 
-const FreelanceForm = ({
+const FreelanceForm = <
+    T extends
+        | IncomeStreamJob
+        | IncomeStreamBusiness
+        | IncomeStreamFreelance
+        | void,
+    S extends IncomeStreamFreelance,
+>({
     handleSubmit,
     setIncomeType,
     formikRef,
-}: FreelanceFormProps) => {
+}: FreelanceFormProps<T, S>) => {
+    const initialValues: CreateIncome<T> = {
+        income: {
+            type: IncomeTypeEnum.FREELANCE,
+            service_offered: '',
+            skills: [] as string[],
+            payment_type: '',
+            rate: '',
+        } as T,
+        monthly_expenses: [],
+    };
+
     return (
         <>
-            <Formik<CreateIncome<IncomeStreamFreelance>>
-                initialValues={{
-                    income: {
-                        type: IncomeTypeEnum.FREELANCE,
-                        service_offered: '',
-                        skills: [],
-                        payment_type: '',
-                        rate: '',
-                    },
-                    monthly_expenses: [],
-                }}
+            <Formik
+                initialValues={initialValues}
                 onSubmit={handleSubmit}
-                innerRef={
-                    formikRef as RefObject<
-                        FormikProps<CreateIncome<IncomeStreamFreelance>>
-                    >
-                }
+                innerRef={formikRef}
                 enableReinitialize={true}
             >
                 {({ values: { monthly_expenses, income } }) => (

@@ -1,8 +1,9 @@
 'use server';
 
 import { db } from '@/db';
-import { incomeStreams } from '@/db/schema';
+import { incomeStreamJob, incomeStreams } from '@/db/schema';
 import { IncomeStream } from '@/types/create-income';
+import { and, eq } from 'drizzle-orm';
 
 export const createIncomeStream = async (incomeStream: IncomeStream) => {
     try {
@@ -24,7 +25,13 @@ export const getIncomeStreams = async (): Promise<
     IncomeStream[] | undefined
 > => {
     try {
-        const data = await db.select().from(incomeStreams);
+        const data = await db
+            .select()
+            .from(incomeStreams)
+            .leftJoin(
+                incomeStreamJob,
+                and(eq(incomeStreams.type, 'income_stream_jobs')),
+            );
         return data as IncomeStream[];
     } catch (e) {
         console.error(e);

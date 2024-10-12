@@ -1,5 +1,3 @@
-import { incomeStreams } from '@/db/schema';
-
 export type IncomeMonthlyExpense = {
     label: string;
     value: string;
@@ -24,7 +22,7 @@ export enum BillingEnum {
 }
 
 export type IncomeStreamJob = {
-    type: IncomeType;
+    id?: number;
     job_title: string;
     job_location: string;
     work_schedule: string;
@@ -32,7 +30,7 @@ export type IncomeStreamJob = {
 };
 
 export type IncomeStreamBusiness = {
-    type: IncomeType;
+    id?: number;
     sector: string;
     business_name: string;
     service_offered: string;
@@ -41,16 +39,26 @@ export type IncomeStreamBusiness = {
 };
 
 export type IncomeStreamFreelance = {
-    type: IncomeType;
+    id?: number;
     service_offered: string;
     skills: string[];
     payment_type: string;
     rate: string;
 };
 
-export type CreateIncome<T = void> = {
-    income: T;
+export type IncomeStream = {
+    id?: number;
+    type: string;
     monthly_expenses: IncomeMonthlyExpense[];
+};
+
+export type IncomeStreamWithType = {
+    id?: number;
+    type: string;
+    monthly_expenses: IncomeMonthlyExpense[];
+    job?: IncomeStreamJob;
+    business?: IncomeStreamBusiness;
+    freelance?: IncomeStreamFreelance;
 };
 
 export type CreateIncomeJob = {
@@ -66,14 +74,7 @@ export type CreateIncomeFreelance = {
     monthly_expenses: IncomeMonthlyExpense[];
 };
 
-export type IncomeStream = typeof incomeStreams.$inferInsert;
-
 export type MonthlyExpenses = {
     label: string;
     value: string;
 };
-
-export type Income =
-    | IncomeStreamJob
-    | IncomeStreamBusiness
-    | IncomeStreamFreelance;
