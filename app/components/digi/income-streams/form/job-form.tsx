@@ -44,7 +44,7 @@ const JobForm = ({
     return (
         <Formik<IncomeStream & IncomeStreamJob>
             initialValues={initialValues}
-            onSubmit={() => handleSubmit(initialValues)}
+            onSubmit={handleSubmit}
             enableReinitialize={true}
             innerRef={formikRef}
         >
