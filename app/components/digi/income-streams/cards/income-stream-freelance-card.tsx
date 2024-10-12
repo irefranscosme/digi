@@ -1,4 +1,4 @@
-import { IncomeStreamFreelance } from '@/types/create-income';
+import { IncomeStreamWithType } from '@/types/create-income';
 import {
     Box,
     Button,
@@ -15,17 +15,19 @@ import {
 import React from 'react';
 
 const IncomeStreamFreelanceCard = ({
-    income,
+    incomeStream,
+    onView,
 }: {
-    income: IncomeStreamFreelance;
+    incomeStream: IncomeStreamWithType;
+    onView: () => void;
 }) => {
     return (
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.service_offered || 'N/A'} {' - '}
+                    {incomeStream?.freelance?.service_offered || 'N/A'} {' - '}
                     <Text display={'inline-block'} textTransform={'capitalize'}>
-                        {income.type}
+                        {incomeStream?.type}
                     </Text>
                 </Heading>
             </CardHeader>
@@ -58,7 +60,8 @@ const IncomeStreamFreelanceCard = ({
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.service_offered || 'N/A'}
+                                {incomeStream?.freelance?.service_offered ||
+                                    'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -76,13 +79,16 @@ const IncomeStreamFreelanceCard = ({
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.skills.length > 0 ? (
+                                {incomeStream.freelance &&
+                                incomeStream?.freelance?.skills.length > 0 ? (
                                     <>
-                                        {income.skills.map((skill, index) => (
-                                            <Flex key={`${skill}.${index}`}>
-                                                <Text>{skill}</Text>
-                                            </Flex>
-                                        ))}
+                                        {incomeStream?.freelance?.skills.map(
+                                            (skill, index) => (
+                                                <Flex key={`${skill}.${index}`}>
+                                                    <Text>{skill}</Text>
+                                                </Flex>
+                                            ),
+                                        )}
                                     </>
                                 ) : (
                                     'N/A'
@@ -90,7 +96,9 @@ const IncomeStreamFreelanceCard = ({
                             </Text>
                         </GridItem>
                         <GridItem>
-                            <Button flexGrow={1}>View</Button>
+                            <Button flexGrow={1} onClick={onView}>
+                                View
+                            </Button>
                         </GridItem>
                     </Grid>
                     <Box

@@ -1,4 +1,4 @@
-import { IncomeStreamBusiness } from '@/types/create-income';
+import { IncomeStreamWithType } from '@/types/create-income';
 import {
     Box,
     Button,
@@ -15,17 +15,19 @@ import {
 import React from 'react';
 
 const IncomeStreamBusinessCard = ({
-    income,
+    incomeStream,
+    onView,
 }: {
-    income: IncomeStreamBusiness;
+    incomeStream: IncomeStreamWithType;
+    onView: () => void;
 }) => {
     return (
         <Card overflow="clip" height={'100%'}>
             <CardHeader>
                 <Heading size="md">
-                    {income.business_name || 'N/A'} {' - '}
+                    {incomeStream?.business?.business_name || 'N/A'} {' - '}
                     <Text display={'inline-block'} textTransform={'capitalize'}>
-                        {income.type}
+                        {incomeStream?.type}
                     </Text>
                 </Heading>
             </CardHeader>
@@ -58,7 +60,7 @@ const IncomeStreamBusinessCard = ({
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.sector || 'N/A'}
+                                {incomeStream?.business?.sector || 'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -76,7 +78,8 @@ const IncomeStreamBusinessCard = ({
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.service_offered || 'N/A'}
+                                {incomeStream?.business?.service_offered ||
+                                    'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
@@ -94,11 +97,14 @@ const IncomeStreamBusinessCard = ({
                                 lineHeight="1.618"
                                 letterSpacing="-0.011em"
                             >
-                                {income.target_audience || 'N/A'}
+                                {incomeStream?.business?.target_audience ||
+                                    'N/A'}
                             </Text>
                         </GridItem>
                         <GridItem>
-                            <Button flexGrow={1}>View</Button>
+                            <Button flexGrow={1} onClick={onView}>
+                                View
+                            </Button>
                         </GridItem>
                     </Grid>
                     <Box

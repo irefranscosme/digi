@@ -38,18 +38,20 @@ const Income = ({ incomeStream, onView }: IncomeProps) => {
                     onView={onView}
                 />
             );
-        // case IncomeTypeEnum.BUSINESS:
-        //     return (
-        //         <IncomeStreamBusinessCard
-        //             income={income as IncomeStreamBusiness}
-        //         />
-        //     );
-        // case IncomeTypeEnum.FREELANCE:
-        //     return (
-        //         <IncomeStreamFreelanceCard
-        //             income={income as IncomeStreamFreelance}
-        //         />
-        //     );
+        case IncomeTypeEnum.BUSINESS:
+            return (
+                <IncomeStreamBusinessCard
+                    incomeStream={incomeStream}
+                    onView={onView}
+                />
+            );
+        case IncomeTypeEnum.FREELANCE:
+            return (
+                <IncomeStreamFreelanceCard
+                    incomeStream={incomeStream}
+                    onView={onView}
+                />
+            );
     }
 };
 
